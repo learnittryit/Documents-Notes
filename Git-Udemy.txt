@@ -72,3 +72,40 @@ OPTION 2 = git add and commit
 9. when we remove a file , then we need to add -u abreast with add
 		>git rem file_name_which_was_commited_earler
 		>git add -u					: simply to tell get this is an update and has to be removed and now staged
+		
+10. Git Unstage the staged file 		
+
+	(a) reset
+		git reset head
+	(b) restore
+		git restore --staged file_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
