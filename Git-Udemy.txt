@@ -25,9 +25,11 @@ mate is textmate -
 	a) We are in which branch
 	b) Untracked files - which actually are not yet part of git, i.e git is actually not tracking it
 2.	=================
+		ADD - add means add new and modified files to staging area
 		1. git add
 		2. git add and commit in one line
 	================= 
+
 
 OPTION 1	= git add
 ---------
@@ -40,7 +42,7 @@ git add
  
 OPTION 2 = git add and commit
 ---------
- 2.2 git commit -a
+ 2.2 git commit -am "message"
 	
 3. "changes to be commited" - means changes are present in index or in staging area to be committed
 
