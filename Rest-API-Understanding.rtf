@@ -1,0 +1,240 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fnil\fcharset0 TrebuchetMS;\f4\fnil\fcharset0 Verdana;\f5\fmodern\fcharset0 Courier;
+\f6\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red51\green51\blue51;\red255\green255\blue255;\red0\green0\blue0;
+\red217\green217\blue217;\red29\green30\blue26;}
+{\*\expandedcolortbl;;\cssrgb\c25882\c25882\c25882;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c87843\c87843\c87843;\cssrgb\c15294\c15686\c13333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh14280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/\
+https://restfulapi.net/rest-architectural-constraints/ \'97\'97\'97\'97> 
+\f1\b \ul Must Read
+\f0\b0 \ulnone \
+\
+1. Browser App \'97\'97\'97\'97 communicate \'97\'97\'97 server\
+\
+2. Key points \
+	Security / performance /	Ease of Customer\
+\
+3. Media Type or Content Type to transfer data as JSON or XML\
+\
+4. Always use \'93NOUN\'94 , which represents an Entity  you manipulate or get as a path. Never use \'93VERB\'94\
+\
+	As HTTP methods are already verbs - GET / PUT / POST / DELETE\
+\
+5. PLURAL nouns \'93/articles\'94 \
+	Be consistent , just use plural nouns , even if singe resource is received\
+\
+6. PARENTS/CHILDS \'97> plural name \'97>/parents must be followed by plural name \'97>/child\'92s \
+	If an articles has a comments then\
+		\'93/articles/articleId/comments\'94\
+\
+7. Handle Errors Gracefully and return standard error response - HTTP response codes\
+\
+Why need HTTP response code > to get standardised error response for clear understanding\
+HTTP Response - because its a standardised error responses , and hence is understandable , so\
+	consumers will handle it much easily considering the generic understanding of the HTTP ERROR RESPONSE\
+\
+	Common error response code \
+	1. 400 Bad request - client side input failed validation.\
+	2. 401 Unauthorised - User is not authorised i.e not-authenticated \
+	3. 403 Forbidden -Access Right Problem\
+			User is Authenticated to enter a building\
+			User IS-NO allowed or has an access right to , access that service\
+	4. 404 Not found - Resource is not found\
+	5. 500 - Internal Server Error\
+	6. 502 / 501 - Bad gateway / not implemented : Normally thrown explicitly\
+	7. 503  Service unavailable - Something unexpected occured at Server Side, anything overload , system failure etc\
+	8. 200 -ok GET\
+	9. 201 - created - POST\
+	10. 204 - Resource not Found\
+\
+\
+\
+8. 400 , ProductNotFoundException - Client side validation\
+	Error code must be accompanied by error description, so explicit and enough information is present\
+\
+9 Throw 400 , when we reject application validation failed\
+\
+10. Filtering / Sorting / Pagination\
+	but the end point should be /employes?id=somthing&age=21\
+\
+11. Good Security Practices SSL / TLS\
+SSL certificate has to be loaded to server\
+\
+==========================\
+Take Away\
+==========================\
+\
+1. Noun Name , with passing filters ahead \
+2. Noun Plurals \
+3. HTTP Response codes , so client can handle the errors gracefully\
+\
+\
+\
+\
+\
+https://medium.com/@mwaysolutions/10-best-practices-for-better-restful-api-cbe81b06f291\
+\
+RULES FOR REST SERVICES\
+\
+1. Noun always\
+2.  \
+\
+	PUT - U hai ismein : means Update : Check if present then update else create\
+	POST - Always create a resource\
+	Patch - Partial Update not the entire resource\
+\
+	Idempotant : Same input leads to same output, server remains in the same state -> GET , PUT( Because no new resource is created , same is updated and returned) , DELETE\
+	non-idempotent - POST every new POST create a new resource hence the state is changing \
+\
+	Resource GET	-Idempotent\
+	Create PUT 	-Idempotent\
+	read 	POST	-non	-Idempotent\
+	update DELETE		-Idempotent\
+	update specific / partial : PATCH non-Idempotent\
+\
+3. To update state do not use GET\
+	update state use \'97> PUT,POST,DELETE\
+\
+4. Use PLURAL nouns\
+\
+5. Use sub resources for relationships\
+	GET /cars/711/driver - get the driver of car number 711\
+						Main resource is CAR , sub resources are Car number and Drivers\
+\
+6. Use HTTP -HEADERS for serialisation format\
+	Content - type defines the requested format :	Content-Type = JSON\
+\
+7. Provide filtering , sorting , pagination for Collections\
+\
+	Filtering\
+	GET /cars?colors=Red\
+	\
+	Sorting\
+	GET /cars?sort=-number,+brand\
+	Reverse sorting suing - , and ascending using +\
+\
+	Field Selections - As specific fields are generally needed\
+	GET /cars?fields=manufacturer, model, id,color\
+\
+	Paging\
+	GET /cars?offset=1&limit=5\
+\
+8. Version your api uri version , params or header \
+\
+9. ERRORS - always using HTTP SERVER codes , as its standard to interpret and make decision on standardised version\
+\
+	200 - OK	-	all ok\
+	201 - OK	-	new resource created\
+	204- OK	-	resource not found\
+	\
+	304-Not Modified\
+	\
+	400 - BAD Request - Client Validation failed\
+	401- Unauthorised - Authentication failed\
+	403- Forbidden - Authentication Passed , but no access rights\
+	404- Not Found - No resource found\
+	\
+\
+	500 0 Internal server\
+	503 - Something went wrong at Server Side\
+\
+10 Allow overriding HTTP methods	\
+\
+\
+\
+11. Client / Consumer \'97
+\f1\b \'97
+\f0\b0 \'97 Server / Producer : \
+	\
+\
+Questions : \
+1. Best deal for the day.\
+2. Student discount \
+3. Anything free like mouse and bag\
+\
+\
+\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f2\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Kindly help me where is the mistake in my following algorithm, it passes only 75% of test cases when I submitted my solution (though my test cases in main() are passed) in codility.\
+\
+Question: Alice and Bob work in a beautiful orchard. There are N apple trees in the orchard. The apple trees are arranged in a row and they are numbered from 1 to N.\
+\
+Alice is planning to collect all the apples from K consecutive trees and Bob is planning to collect all the apples from L consecutive trees. They want to choose two disjoint segments (one consisting of K trees for Alice and the other consisting of L trees for Bob) so as not to disturb each other. What is the maximum number of apples that they can collect?\
+\
+Write a function that given an array A consisting of N integers denating the number of apples on each apple tree in the row, and integers K and L denoting, respectively, the number of trees that Alice and Bob can choose when collecting, returns the maximum number of apples that can be collected by them, or -1 if there are no such intervals.\
+\
+For example, given A =[6, 1,4,6,3,2,7,4], K=3, L=2, your function should return 24, because Alice can choose trees 3 to 5 and collect 4 + 6 + 3 = 13 apples, and Bob can choose trees 7 to 8 and collect 7 + 4 = 11 apples. Thus, they will collect 13 + 11 = 24 apples in total, and that is the maximum number that can be achieved.\
+\
+Given A = [10, 19, 15], K = 2, L = 2, your function should return -1, because it is not possible for Alice and Bob to choose two disjoint intervals.\
+\
+Solution:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs20 \cf4 \cb1 \strokec4 \
+\
+\
+\pard\pardeftab720\sl457\sa240\partightenfactor0
+
+\f4\fs32 \cf5 \cb6 \strokec5 A string S is given. In one move, any two adjacent letters can be swapped. For example, given a string "abcd", it's possible to create "\ul ba\ulnone cd", "a\ul cb\ulnone d" or "ab\ul dc\ulnone " in one such move. What is the lexicographically minimum string that can be achieved by at most K moves?\cb1 \
+\cb6 Write a function:\cb1 \
+\pard\pardeftab720\sl342\sa180\partightenfactor0
+
+\f5\fs24 \cf5 \cb6 class Solution \{ public String solution(String S, int K); \}\cb1 \
+\pard\pardeftab720\sl457\sa240\partightenfactor0
+
+\f4\fs32 \cf5 \cb6 that, given a string S of length N and an integer K, returns the lexicographically minimum string that can be achieved by at most K swaps of any adjacent letters.\cb1 \
+\cb6 Examples:\cb1 \
+\cb6 1. Given S = "decade" and K = 4, your function should return "adcede". Swaps could be:\cb1 \
+\cb6 d\ul ec\ulnone ade 
+\f6 \uc0\u8594 
+\f4  d\ul ce\ulnone ade,\cb1 \
+\cb6 dc\ul ea\ulnone de 
+\f6 \uc0\u8594 
+\f4  dc\ul ae\ulnone de,\cb1 \
+\cb6 d\ul ca\ulnone ede 
+\f6 \uc0\u8594 
+\f4  d\ul ac\ulnone ede,\cb1 \
+\cb6 \ul da\ulnone cede 
+\f6 \uc0\u8594 
+\f4 \'a0\ul ad\ulnone cede.\cb1 \
+\cb6 2. Given S = "bbbabbb" and K = 2, your function should return "babbbbb". The swaps are:\cb1 \
+\cb6 bb\ul ba\ulnone bbb 
+\f6 \uc0\u8594 
+\f4  bb\ul ab\ulnone bbb,\cb1 \
+\cb6 b\ul ba\ulnone bbbb 
+\f6 \uc0\u8594 
+\f4  b\ul ab\ulnone bbbb.\cb1 \
+\cb6 3. Given S = "abracadabra" and K = 15, your function should return "aaaaabrcdbr".\cb1 \
+\cb6 Write an\'a0efficient\'a0algorithm for the following assumptions:\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf5 \cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 N is an integer within the range [1..100,000];\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 string S consists only of lowercase letters ('a'-'z');\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 K is an integer within the range [0..1,000,000,000].\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs25\fsmilli12800 \cf5 \cb6 Copyright 2009\'962021 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+}

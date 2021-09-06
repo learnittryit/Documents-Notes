@@ -1,0 +1,170 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fswiss\fcharset0 Arial-BoldMT;\f2\fnil\fcharset0 LucidaGrande;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fswiss\fcharset0 Arial-BoldItalicMT;\f5\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red13\green16\blue23;\red0\green0\blue0;\red0\green0\blue255;
+\red100\green100\blue100;\red42\green0\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c5490\c7843\c11765;\csgray\c0;\cssrgb\c1680\c19835\c100000;
+\csgenericrgb\c39216\c39216\c39216;\csgenericrgb\c16471\c0\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid101\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid103\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid104\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15700\viewkind0
+\deftab720
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+\ls1\ilvl0
+\f0\fs28 \cf2 Kunal Note - Must revise https://www.rabbitmq.com/tutorials/amqp-concepts.html\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+
+\f1\b \cf2 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 		\ul Rabbit MQ Understanding
+\f0\b0 \ulnone \
+		\
+		1. Messaging -\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf2 {\listtext	
+\f2 \uc0\u8259 
+\f0 	}Synchronous - Sender is blocked till it get the response \
+{\listtext	
+\f2 \uc0\u8259 
+\f0 	}Asynchronous - Sender is not blocked\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 		\
+		2. Direct message too complex \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf2 {\listtext	
+\f2 \uc0\u8259 
+\f0 	} With Message Broker - \
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls2\ilvl2\cf2 {\listtext	
+\f2 \uc0\u8259 
+\f0 	}a. All connections must be registered with. Message Broker\
+{\listtext	
+\f2 \uc0\u8259 
+\f0 	}b. All the connections will talk to Message Broker and not directly with Each other\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls2\ilvl3\cf2 {\listtext	
+\f2 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f2 \uc0\u8259 
+\f0 	}        				Client 1		\'97\'97\'97> Register and val to message broker only \
+{\listtext	
+\f2 \uc0\u8259 
+\f0 	}                               	Client-2		\'97\'97> Register and val to message broker only \
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 		3. Rabbit MQ is MOM - Message Oriented Middleware.      Which implements AMQP Advance Message Queueing Protocol\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+\cf2 	\
+	 4. Message Broker - A program where communication between sender and a receiver is via a messgaes\
+		a. Where sender and receiver can be different applications or micro services\
+		b. Advantage - Message broker can keep the message with it till the time bother sender and receiver consumes the message . If a receiver is down for sometime then message broker will keep 		the message in the memory and receiver when comes up can anytime retrieve it.\
+\
+	5. Prerequise - DownErlang\
+		a. Go to folder where rabbit MQ is installed \
+			
+\f3\fs22 \cf3 \CocoaLigature0 /usr/local/Cellar/rabbitmq/3.8.9_1/sbin\
+
+\f0\fs28 \cf2 \CocoaLigature1 		b. Do  run =			./Rabbitmq-server\
+		c. Login \
+			http://localhost:15672\
+			guest/guest\
+			\
+	6. Rabbit MQ is not based on JMS Protocol but is dependent on the AMQP- Advance Messaging Queing Protocol\
+	7. JMS is an API and AMQP is a protocol - JMS can also use AMQP to transfer messages\
+		AMQP is a standardization of messages\
+\
+\
+Message Broker ki kahani\
+\
+1. Microservices - for asynchronous communication we need message broker. WHY?\
+	So that the communication between micro services are reliable , stable and message don\'92t get lost. \'97\'97\'97> Kafka , Redis Cache and Rabbit MQ\
+2. Asynchronous Communcation advantage :\
+	a. Fire and forget - basically its non blocking by nature.\
+	b. Second it provides and supports better calling . Eg there is one instance of sms , now we can increase the instance and mores instance can pick the messages from the queue.\
+	c. Even if a micro service is down , it can always comeback and read back from the queue.\
+	d. Parties I.e Publish and Subscribe / P2P both can be independent and non related bodies, who do not know each other\
+\
+3. Consider things to choose Broker\
+	a. Broker Scale - Kitne message broker handle her skate hai , number of messages a broker can handle\
+	b. Data persistency - Ability to recover messages \
+	c. Consumer Capability - Whether a broker is able to manage One to One or One to Many consumers\
+\
+\
+4. \
+	a. RabbitMQ (AMQP) - \
+			50K messages / sec, \
+			persistentce I=Yes\
+			Both : One to One and One to many.  (Little latency issue in persistence mode)\
+			Publish and Subscribe and Point to Point Both \
+		a.1 Uasge \
+			1. Complex routing\
+			2. When throughput is in 50K max \
+	b. Kafka - \
+			Millions messages / sec, \
+			persistentce =Yes\
+			Both : One to many only  (very high throughput and almost zero latency)\
+			Suitable to Asynchronous communication\
+			Only Publish and Subscribe creates a replicas and ISR I.e in sync replica\'92s\
+		b.1 - Usage \
+			1. Very high throughput and zero latency\
+			2. Storing large amount of data with persistence capabilities for a long time\
+	c. May be Reddis\
+			Millions of messages /sec\
+			persistentce =No , its an in memory database \{Its different its either a high performance key-value store or a message broker\}\
+			Both : One to One and One to many.  \
+			Suitable for real time processing \
+		c.1 - Usage \
+			1. Best Suitable for short lived messages, where no persistence is needed\
+\
+\
+\
+\
+5. Exchange Type - durable come with performance impact , as even the application stops the message can be retrieved. \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+
+\f4\i\b \cf2 \ul \ulc2 Over all picture 
+\f0\i0\b0 \ulnone \
+\
+
+\f1\b \cf4 Producer \'97\'97\'97\'97\'97\'97>Exchange \'97\'97\'97\'97>+Binding+routeId+\'97\'97\'97\'97\'97>Queue\'97\'97\'97(Message-Listner-Container)\'97\'97>+Listener+\'97\'97\'97\'97\'97>Consumer \
+Main Connection \'97\'97> shared by local connections called Channels[inside the broker]
+\f0\b0 \cf2 \
+\
+\
+
+\f4\i\b \ul bind(Queue)to(Exchange)with(routing-key)
+\f0\i0\b0 \ulnone \
+\
+MessageListenerContainer - [ Place message from queue to listener ]\
+	queue \'97\'97\'97\'97+MessageListenerContainer+\'97\'97\'97\'97 Listener\
+\
+\
+Error : Common ERROR\
+Common Error : Unable to bind to listener, In spring boot applications. We have to add Jackson2JasonMessageConvertor @Bean to the configuration and it will automatically be wired to the listener\
+Content type must be set to application/json\
+https://stackoverflow.com/questions/41914665/spring-amqp-converter-issue-using-rabbit-listener/41914905		 \
+\
+#How do we set the frequency and the other parameters of the listeners\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs24 \cf5 @RabbitListener\cf0 (queues = \cf6 "$\{kunal.rabbitmq.queue\}"\cf0 ,priority = \cf6 "3"\cf0 ,concurrency = \cf6 "2"\cf0 )
+\f0\fs28 \cf2 		\
+\
+// Important takeaways\
+\
+\
+\
+\
+\
+
+\f1\b \ul Dead Letter Queue - Undelivered Message Queue (DLQ)\
+
+\f0\b0 \ulnone Basically Message is undelivered because of any reason : length is less or exceeded, rejected by another queue\
+\
+\
+\
+}

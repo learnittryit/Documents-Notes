@@ -1,0 +1,563 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fswiss\fcharset0 Helvetica-Bold;\f4\fswiss\fcharset0 Helvetica-BoldOblique;\f5\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red31\green31\blue31;\red239\green239\blue239;\red127\green0\blue85;
+\red42\green0\blue255;\red63\green127\blue95;\red73\green73\blue73;\red63\green127\blue127;\red33\green255\blue6;
+\red145\green145\blue145;\red0\green0\blue192;\red106\green62\blue62;\red181\green84\blue95;\red194\green229\blue166;
+\red128\green64\blue0;\red255\green255\blue10;\red60\green60\blue60;\red75\green91\blue103;\red30\green35\blue38;
+\red202\green202\blue202;\red127\green0\blue85;\red0\green0\blue192;\red42\green0\blue255;\red63\green127\blue95;
+\red60\green60\blue60;\red128\green64\blue0;\red255\green255\blue10;\red14\green0\blue45;\red33\green255\blue255;
+\red73\green73\blue73;\red145\green145\blue145;\red14\green0\blue45;}
+{\*\expandedcolortbl;;\cssrgb\c16078\c16078\c16078;\cssrgb\c94902\c94902\c94902;\csgenericrgb\c49804\c0\c33333;
+\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c24706\c49804\c37255;\csgenericrgb\c28627\c28627\c28627;\csgenericrgb\c24706\c49804\c49804;\cssrgb\c0\c97680\c0;
+\csgenericrgb\c56863\c56863\c56863;\csgenericrgb\c0\c0\c75294;\csgenericrgb\c41569\c24314\c24314;\csgenericrgb\c70980\c32941\c37255;\cssrgb\c80097\c91038\c70905;
+\csgenericrgb\c50196\c25098\c0;\cssrgb\c99942\c98555\c0;\csgenericrgb\c23529\c23529\c23529;\cssrgb\c36471\c43137\c47843;\cssrgb\c15686\c18431\c20000;
+\cssrgb\c83137\c83137\c83137;\csgenericrgb\c49804\c0\c33333;\csgenericrgb\c0\c0\c75294;\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c24706\c49804\c37255;
+\csgenericrgb\c23529\c23529\c23529;\csgenericrgb\c50196\c25098\c0;\cssrgb\c99942\c98555\c0;\cssrgb\c6643\c1990\c23261;\cssrgb\c0\c99144\c100000;
+\csgenericrgb\c28627\c28627\c28627;\csgenericrgb\c56863\c56863\c56863;\cssrgb\c6643\c1990\c23261;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15700\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Tutorial : https://reactjs.org/tutorial/tutorial.html\
+\
+React JS\
+\
+1. JS front end library - declarative , efficient and flexible JS library, for building reusable UI components. Its a component based library developed by FB.\
+2. Main aim UI component development \'97> It uses \'93JS virtual DOM\'94  i.e JS object\
+3. Virtual DOM - changes individual element and do not load the entire DOM\
+\
+4. Component Based  - make many small react js components and then combine \
+	\{ // Higher react js component \
+		\{\
+			combination of small reach js components	\
+		\}\
+	\}\
+\
+5. Traditional way - DOM ( Document Object Model ) :  \
+	-> Browser creates this object when page is loaded.\
+	->  Any modification , creates a new DOM object every time whenever a change occurs. Drawback -> Memory wastage and performance reduction because each time object is created\
+Therefore React JS arised : \
+	\{\
+		1. Divide an application into multiple React JS components\
+		2.  In the react JS , We do not work on the actual DOM object created by browser , but we work on the Virtual DOM  I.e which is present in the build and in the end that particular component is finally\
+			turned into a DOM . \
+			\
+		Kunal\'92s Understanding \'97 > Matlab : similarly like we change in the dist and not in the actual file , and then finally making the list file an actual file\
+	\}\
+\
+6. Install node JS \
+>Brew install node\
+>node -v\
+>npm -v\
+>
+\f1\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+sudo npm install -g create-react-app\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 $ npm -v$create-react-app \'97 version\
+\pard\pardeftab720\partightenfactor0
+\cf2 $ create-react-app react_app > create an app and folder in the same directory location , capital letters are not allowed\
+\cb1 \
+\
+7. Creating new React app is very complicated , \
+				\{	\
+							 It needs configurations , dependencies , \
+							[ Babel , Webpack and ES Lint]\
+				\}\
+8. Create-react-app\
+	node -v\
+	npm -v : npm is a package manager for JS \
+	nom = Node Package Manager\
+9. App.js - displays an output\
+	Make changes in the App.js \'97>Webpack recompiles the code and displays the code on the screen\
+	Kunal - now we can make as many components and import new components in app.js , this file will be included in index.html once\
+	web pack compiles it \
+	9.1 nom build \'97> this is a production build\
+\
+10 Important features \
+	1. JSX - Java Script XML : Recommended but optional\
+	2. Components - React JS is all about components , make components i.e React JS component . Everything is component in React 	JS. " Component Based Approach"\
+	3. One Way Data Binding - Data binding means data is unidirectional - Flux Pattern is used to keep data unidirectional.\
+	4. Virtual DOM (Data Object Model) - Its a representation of original DOM\
+		Advantage : Very fast and no memory\
+					Fast - because virtual Dom changes are reflected back to original DOM\
+					no Memory - Foe every change entire DOM is not loaded\
+	5. Performance : Superb\
+		DOM -Its a cross platform and programming API, dealing with HTML,XML,XHTML\
+		DOM - exists entirely in memory, therefore when we use memory then we do not actually modify DOM , we only modify\
+			representation of DOM, which updates DOM with actual changes		\
+\
+\
+You Tube :\
+\
+1. Virtual DOM \
+2. Reusable web components\
+	Component means --> 100 lines of code can be categorised in a component and can be assigned a variable. So we can use any \
+						variable holding a component or a categorised code anywhere, easy to reuse . Basically this is modularity.\
+						Its just like a java script variable, call this variable wherever you want. E.g\
+						All big code is now divided into 3 components , 3 categories or 3 modules .as shown. We can make use of\
+						all the three components in anywhere any page etc\
+						<body>\
+							<Navigation Bar/>  \
+							<Main Content/>\
+							<footer/>\
+						</body>\
+3. Maintained by Facebook : Lot of contributers\
+4. Hirable\
+\
+\
+Questions in mind : Ye JSX haik ya , its impacting the tags actually now\
+\
+REACT DOM and JSX\
+\
+1. render(what to render, where to render)\
+2. Functional component is created -> Basically a function which can return only one JSX tag value\
+	2.1 There could be lot of react components which can be folded by a single component\
+\
+	Syntax\
+	\
+	Step1-:\
+	function FunctionalComponent()\
+	\{\
+		return (\
+				<div>\
+					<p>entire code to be returned - but will return single jsx component , div here</p>\
+					<h1>Single jsx value</h1>	\
+				<div>);\
+	\}\
+	Step2: - remember component with closing dash <FunctionalComponetname /> \
+	render(<FunctionalComponet/>,deployment.getbyElementId('root');\
+\
+3. import React from 'react' \
+	Almost all the react component must have this line\
+	We must import react , whereever we want to make use of jsx\
+	means we move the function from 	index.js to a separate file\
+\
+\
+4. export functionNameReactJsComponent\
+	This is to expose your react js component , so that outside it can be used by other files\
+"Export to Expose " .. , so wherever you want to use it simply import it\
+Suppose I was to import in another file I will use import command\
+\
+	import functionName from 'JsFleName.js' ---> same as python or JigSaw actually , we can import in any file\
+=========	\
+Steps :\
+\
+S-1. import React from 'react'\
+	define FunctionName\
+	export default functionName\
+\
+S-2. import FunctionName from 'FileName.js' or import FunctionName from 'FileName' > no .js extension is needed, its by default \
+	render(<functionName/,getElementById('root')>\
+=========\
+\
+5. \
+	export default FunctionName1;\
+\
+6. import FunctionName from 'FileName' or import * from 'FileName' - > whichever is exported by default can be imported anywhere \
+7. Import by making a serrate folder \
+	import FuncName from './folderName/FileName"\
+\
+8. Good convention is each file should have its one React Js Component\
+	fileName - MyInfo.js\
+	ReactJsComponent - \
+		function MyInfo() // basically file name and component name is same\
+		\{\
+			return component;\
+		\}\
+======================================\
+-----------\
+Parent and Child Component \
+\
+1. Component (upper case , </App>--></MyInfo>) - Element (small case , basically regular html code ----> <div></div>)\
+	<App-Component/> --> <MyInfo-Component/> --> <div> Element and not a component because an html </div> \
+\
+\
+Component is in Upper Case\
+Element is in Lower Case\
+\
+DOM (Document Object Model) is a tree structure and root is an element i.e HTML\
+\
+\
+2. A component can render another component , which can further finally render a element\
+<App/> --> May Render\
+			--> <MyInfo/> , <Second-ReactJS component/>,<Third-ReactJS component/>\
+			--> Where\
+				 	<My Info React JS component/>  can render an element <div>Name<div/>\
+					<My Second React JS component- Header Component/>  can render an element <div>Header-Element<div/>\
+				  	<My Third React JS component- FooterComponent/>  can render an element <div>Fotter-Element<div/>\
+\
+\
+\
+3. CRUX is \
+	Component can render another component which can further render another component .... and so on--> and finally an element.\
+Basically all are being modularised-Components , where a module-sub-component can contain so many sub-modules and finally an element\
+\
+3.1 - Kunal - jaise kisi ko be spring component banana ke liye koi spring stereo type annotation chahiye, similarly to make a \
+	file a component of react JS we have to import react \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf2 		"	import React from 'react'	"  --> 
+\f1\b0 This tells that a file is a react component\
+\
+3.2 Component is a module or basically a independent piece of code - I can plug that component anywhere \
+\
+4. We are dealing with JSX - variation of Java Script\
+	use className instead of class : Under the hood we are using JavaScript\'92s DOM API and class is a reserved variable of JS\
+	Remember css : can be applied to react elements and not react components\
+	<header className=\'93navbar\'94> - ok , this is a html tag and is a react element\
+	<Header / > : Not-ok , this is a react component\
+\
+5. CSS files are imported :\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs24 \cf4 \kerning1\expnd0\expndtw0 import
+\f0\b0 \cf0  \cf5 '../style.css' \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+../ these 2 dots and / is important -> \'93../\'93 
+\f0\fs24 \cf5 \kerning1\expnd0\expndtw0 \
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+\
+\
+6. Some good practices:\
+	a) Don\'92t use ;\
+	b) use .css and must place in src or its sub folders\
+	c) try using arrow functions, Function keyword is replaced by const:\
+		 
+\f2\b const FunctionName=()=>( What ever you want to write)\
+			
+\f0\b0\fs24 \cf6 \kerning1\expnd0\expndtw0  Function ArrayFunction() \{ return (<div></div>div)\}\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf6 			 const ArrayFunction= () => (<div></div>div)\}\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+\
+		Benefit : Everything is in brackets(), no need to write a return statement\
+	d) .cssStyleName // This is a css entry and is very good to define your own style\
+		\{\
+			Write whatever style you need \
+			background-colour : purple\
+		\}\
+	e) var is replaced by const\
+\
+7. Curly braces 
+\f2\b \{\}
+\f1\b0  - very important \
+	Any javaScript interpretation is done using 
+\f2\b \ul \{contName or varName\} -> Inside curly braces everything will be interpreted as\
+	javascript\
+\
+
+\f1\b0 \ulnone 8. Remember JSX expects a Java script object and not a string\
+	Note : \
+		a) \{ 
+\f2\b Curly Braces
+\f1\b0  \} is a key here , whenever need to wrap JSX to JavaScript , I need to wrap JSX into \{curly braces\} \
+		b) className is replaced by style below : which is also same , className if we define .css\{\} function\
+	\
+	WRONG - > 
+\f0\fs24 \cf7 \kerning1\expnd0\expndtw0 <\cf8 h3\cf7 ><\cf8 td\cf0  \cf4 \ul \ulc4 style\cf0 \ulc0 =
+\f4\i\b \cf5 \cb9 \ulc5 "color: #FF8C00"
+\f0\i0\b0 \cf7 \cb1 \ulnone >\cf0  Good 	\cf10 \{\cf11 timeOfDay\cf10 \}\cf0  	Folks!!\cf7 </\cf8 td\cf7 ></\cf8 h3\cf7 >.  
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+  \'97 > This will not work as JSX does not expect a string but a JS object\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf7 \kerning1\expnd0\expndtw0 	
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+CORRECT- >
+\f0\fs24 \cf7 \kerning1\expnd0\expndtw0  <\cf8 h3\cf0  \cf4 style\cf0 =
+\f4\i\b \cf10 \cb9 \{\cf0 \{\cf12 color :\cf5 "#FF8C00"\cf0 \}\cf10 \}
+\f0\i0\b0 \cf7 \cb1 >\cf0  Good 	\cf10 \{\cf11 timeOfDay\cf10 \}\cf0  	Folks!! \cf7 </\cf8 h3\cf7 >		
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+-> Basically with curly braces , its an object , so we can keep adding key value pairs like \{color:red,background-color=yellow\} > dash \'93-\'93 not allowed so backgroundColor=white\
+	\
+	a) This is an object in Curley braces  : \{color:red,background-color=yellow\}\
+	b) So is used as \{ \{color:red,background-color=yellow\} \} \'97 > \{ ObjectName \} => a curleyBrace inside a Curley bract , where inside one is an object and hence can be assigned to a constant variable and can be used as shown below\
+	c) const objName = \{color:\'94red\'94,backgroundColor:\'94yellow\'94\}\
+	
+\f3\b\fs24 \cf4 \kerning1\expnd0\expndtw0 const
+\f0\b0 \cf0  \cf11 genericStyle\cf0 =\
+		\{\
+			\cf12 color :\cf5 "red"\cf0 ,\
+			\cf12 backgroundColor:\cf5 "yellow"\cf0 ,\
+			\cf12 fontSize:\cf13 11\cf0 ,\
+			\cf12 \ul \ulc12 fontSize\ulnone :\cf5 "51px"\cf0  \cf6 // pixcel  it must be in a string quotes\cf0 \
+		\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+	\
+		<h1 style=\{
+\f0\fs24 \cf11 \kerning1\expnd0\expndtw0 genericStyle
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+\}> Enter Text</h1>\
+	d) because 
+\f0\fs24 \cf11 \kerning1\expnd0\expndtw0 genericStyle 
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+ is an object , so we can change the property using \'93dot\'94\
+			genericStyle.color=\'91red\'92\
+			genericStyle.backgroundColor=\'91white\'92\
+\
+	e) className instead of style\
+		<h1 className=valueIncss> Text </h1>	\
+	\
+====================================\
+PROPS - Understandning and Concepts\
+PROPS are properties only , in real manner they are just parameters passed , just like in java \
+props is a reserved keyword	\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+9. Basic html is \
+	<a=anchor href\
+	<image src\
+	<input lot of properties : type= , name=, \
+\
+	Think in terms of components : list components , a component of components .. reusable components \
+\
+\
+10. props - its passes as a single parameter , which is containing all the parameters which have been passed from behind.\
+We can get value of the property i.e props as follows\
+\
+function APP()\{\
+	return(\
+			<ABC name="Kunal" age="39"/> // Here we are passing all the parameters [
+\f2\b \ul Multiple
+\f1\b0 \ulnone ]\
+		)	\
+\}\
+/**\
+* One property contains other properties in it\
+**/\
+function ABC(props)\{\
+// see only one single parameter, where all the above parameters are passed [
+\f2\b \ul MotherParameter_SingleParameter= contains all the parameters
+\f1\b0 \ulnone ]\
+	return(\
+	<div>\
+	\{props.name\}\
+	\{props.age\}\
+	\
+	</div>\
+	)\
+\}\
+\
+\
+\
+11. Ultimatly props is needed anyway .., therefore just understand the concept.\
+	props - can hold any none object with any property name i.e all properties\
+	one Object - e.g contacts : which holds further properties , however props is still needed to get the properties in properties\
+\
+
+\f0\fs24 \cf6 \kerning1\expnd0\expndtw0 /* 
+\f4\i\b \ul props is a reserverd object showing properties or parameters passed\cf0 \ulc0 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \ulc6 contacts is a single object or a parameter passed which further holds value , just like\cf0 \ulc0 \
+\cf6 \ulc6 JSON object or a Python dictionary\
+\
+Below we have shown how to pass parameters to the components\
+
+\f0\i0\b0 \ulnone */\
+\
+\
+\
+// component name with multi-properties\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb14 <\cf15 ContactCardprops\cf0  \
+				\cf4 name\cf0    =\cf5 "kunal rai-1"\cf0  \
+				\cf4 email\cf0   =\cf5 "kunal@rai.com-1"\cf0  \
+				\cf4 imgUrl\cf0  =\cf5 "http://placekitten.com/300/200"\cf0 \
+				\cf4 phone\cf0   =\cf5 "+65-86956962-1"\cf0  \cf7 />\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \
+// component name withsingle-ObjectParameter - containting properties\cf0 \
+	\cb16 <\
+		ContactCard2contact  contacts =\
+		\cf10 \{\cf0 \{\cf12 name   :\cf0  \cf5 "kunal rai-2"\cf0 ,	\cf12 email  :\cf5 "kunal@rai.com-2"\cf0 ,\cf12 imgUrl :\cf5 "http://placekitten.com/300/200"\cf0 ,	\cf12 phone  :\cf5 "+65-86956962-2"\cf0 \}\cf10 \}\cf0 \
+	/>\cf6 \cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 	
+\f3\b \cf4 const
+\f0\b0 \cf0  \cf17 ContactCard2contact\cf0 =(\cf15 props\cf0 )
+\f3\b \cf4 =>
+\f0\b0 \cf0 \
+	(\
+	\cf7 <\cf8 div\cf7 >\cf0 \
+		\cf7 <\cf8 div\cf0  \cf4 className\cf0 =\cf5 'contact-card'\cf7 >\cf0 \
+			\cf7 <\cf8 image\cf0  \cf4 source\cf0 =\cf10 \{\cf11 props\cf0 .\cf11 contacts\cf0 .\cf11 imgUrl\cf10 \}\cf7 >\cf0 Image :\cf7 </\cf8 image\cf7 >\cf0 \
+			\cf7 <\cf8 h3\cf7 >\cf0 Name : \cf10 \{\cf11 props\cf0 .\cf11 contacts\cf0 .\cf11 name\cf10 \}\cf7 </\cf8 h3\cf7 >\cf0 \
+			\cf7 <\cf8 p\cf7 >\cf0 Phone : \cf10 \{\cf11 props\cf0 .\cf11 contacts\cf0 .\cf11 phone\cf10 \}\cf7 </\cf8 p\cf7 >\cf0 \
+			\cf7 <\cf8 p\cf7 >\cf0 Email : \cf10 \{\cf11 props\cf0 .\cf11 contacts\cf0 .\cf11 email\cf10 \}\cf7 </\cf8 p\cf7 >\cf0 \
+			\cf7 <\cf8 p\cf7 >\cf0 Printing props\cf7 </\cf8 p\cf7 >\cf0 \
+		\cf7 </\cf8 div\cf7 >\cf0 \
+	\cf7 </\cf8 div\cf7 >\cf0 \
+\
+)\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+11. Important concept\
+if you need to refer a modle in same folder "./app.js"\
+if you want to refer in another folder - then just go one folder down\
+part 1-> . = means current folder\
+part 2-> ./subfolder = one subfolder ... and so on \
+part 3-> ./subfolder/file.js\
+\
+12. We can use styles and ternary operator\
+<p style = \{\{color : props.object.property ? "green":"red"\}\}> // it just works like python\
+\
+\
+13 const : its everything \
+	const as an array \
+		const arr=[1,2]\
+	const as an integer, string\
+		const val=10, val2="kunal"\
+	const as an function, map,dictionary\
+		const funcName=(parameters)=>(// add code)\
+		const map_dict = \{name : "kunal, age : "19"\} \
+\
+\
+\
+\
+14. Functional Programming concept - like java 1.8\
+\
+map.(containsFunction) and it iterates on each value just like streams \
+\
+Recommended urls :\
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f5\fs26 \cf18 \cb19 \outl0\strokewidth0 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find\cf20 \cb1 \strokec20 \
+\cf18 \cb19 \strokec18 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findindex\cf20 \cb1 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \outl0\strokewidth0 15. 
+\f3\b\fs24 \cf21 \kerning1\expnd0\expndtw0 import
+\f0\b0 \cf0  \cf22 ProductDataStore_\cf0  
+\f3\b \cf21 from
+\f0\b0 \cf0  \cf23 './ProductDataStore'\cf24 // it does not matter what name you put here, I have changed ProductDataStore to ProductDataStore_\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+16. (a)instead of wrting export default NameOfComponent , \
+	(b) we can do directly \
+	export default componentName()\
+	\{\
+		// write code , then in the end export default statement is not needed\
+	\}	
+\f0\fs24 \cf24 \kerning1\expnd0\expndtw0  \
+\
+\
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+17. Important - there are 2 ways to pass or iterate or render values or pass parameters in props\
+	(a) either pass each and every parameter -> \'93props.actualVaiable\'94\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs24 \cf21 \kerning1\expnd0\expndtw0 const
+\f0\b0 \cf0  \cf22 itemsItr\cf0  = \cf22 ItemsData\cf0 .\cf25 map\cf0 ((\cf26 items\cf0 ) 
+\f3\b \cf21 =>
+\f4\i \cf6  keys=\{items.id\}\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf6 			veg=\{items.veg\}\cf0 \
+\cf6 			fruits=\{items.fruits\}\cf0 \
+\cf6 			drinks=\{items.drinks\}\cf0 \
+\cf6 			yes=\{items.positiveDecision\}\cf0 \
+\cf6 			no=\{items.negativeDecision\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\i0\fs32 \cf27 \cb28 \expnd0\expndtw0\kerning0
+==> 
+\f3\fs24 \kerning1\expnd0\expndtw0 <tr><input type="checkbox" />\{props.\cb29 items.\cb28 veg\}</tr>
+\f1\b0\fs32 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\
+	(b) Or simply pass a temp variable and in the props take it out as \'93props.tempVatiable.actualVaiable\'94\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs24 \cf21 \kerning1\expnd0\expndtw0 const
+\f0\b0 \cf0  \cf22 itemsItr\cf0  = \cf22 ItemsData\cf0 .\cf25 map\cf0 ((\cf26 items\cf0 ) 
+\f3\b \cf21 =>
+\f1\b0\fs32 \cf2 \expnd0\expndtw0\kerning0
+ 
+\f0\fs24 \cf7 \kerning1\expnd0\expndtw0 <\cf15 TodoList\cf0  \cf4 tems\cf0 =\cf10 \{\cf11 items\cf10 \}\cf0  \cf7 />\cf6 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf2 \expnd0\expndtw0\kerning0
+\
+\
+	Below showing both the ways \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs24 \cf21 \kerning1\expnd0\expndtw0 const
+\f0\b0 \cf0  \cf22 itemsItr\cf0  = \cf22 ItemsData\cf0 .\cf25 map\cf0 ((\cf26 items\cf0 ) 
+\f3\b \cf21 =>
+\f0\b0 \cf30 			<\cf26 TodoList\cf0 \
+			\cf24 /*keys=\{items.id\}\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf24 			veg=\{items.veg\}\cf0 \
+\cf24 			fruits=\{items.fruits\}\cf0 \
+\cf24 			drinks=\{items.drinks\}\cf0 \
+\cf24 			yes=\{items.positiveDecision\}\cf0 \
+\cf24 			no=\{items.negativeDecision\}*/\cf0 \
+			\cf21 items\cf0 =\cf31 \{\cf22 items\cf31 \}\cf0  \cf30 />\cf24 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs32 \cf27 \cb32 \expnd0\expndtw0\kerning0
+==> 
+\f3\fs24 \kerning1\expnd0\expndtw0 <tr><input type="checkbox" />\{props.veg\}</tr>
+\f1\b0\fs32 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\
+\
+====================================\
+\
+	
+\f2\b \ul \ulc2 \
+	
+\f1\b0 \ulnone \
+\
+-----------\
+======================================\
+\
+---------------------------\
+ES6=ES2015=ECMAScript6\
+Client side scripting JavaScript,JScript - > Write Less and Do More\
+Basic understanding\
+1. Literals - integer literals and string literals\
+2. Var - memory holding a value . Semi-colon is optional\
+\
+---------------------------\
+\
+https://www.youtube.com/results?search_query=es6+features+in+javascript - related\
+https://codeburst.io/digging-my-way-out-of-tutorial-hell-6dd5f9927384\
+\
+https://medium.com/distributed-knowledge/scalable-web-architectures-concepts-design-6fd372ee4541\
+https://gearheart.io/blog/how-build-scalable-web-applications/\
+https://medium.com/akka-architects/design-thinking-in-architecture-db83284cde97\
+\
+https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}

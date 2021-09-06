@@ -1,0 +1,403 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red13\green16\blue23;\red13\green16\blue23;
+\red255\green255\blue255;\red156\green152\blue135;\red0\green0\blue255;\red255\green255\blue254;\red22\green107\blue41;
+\red144\green1\blue18;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c5490\c7843\c11765;\cssrgb\c5490\c7843\c11765;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c67451\c65882\c60000;\cssrgb\c0\c0\c100000;\cssrgb\c100000\c100000\c99608;\cssrgb\c7451\c48627\c21176;
+\cssrgb\c63922\c8235\c8235;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15180\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+Drop table Contests;\
+create table Contests (\
+contest_id number(10),\
+hacker_id number(10),\
+name varchar2(10)\
+);\
+\
+delete from Contests;\
+insert into Contests values (66406,17973,'Rose');\
+insert into Contests values (66556,79153,'Angela');\
+insert into Contests values (94828,80275,'Frank');\
+select * from Contests;\
+\
+---------\
+\
+Drop table Colleges;\
+create table Colleges (\
+college_id number(10),\
+contest_id number(10)\
+);\
+\
+delete from Colleges;\
+insert into Colleges values (11219,66406);\
+insert into Colleges values (32473,66556);\
+insert into Colleges values (56685,94828);\
+select * from Colleges;\
+\
+\
+---------\
+Drop table Challenges;\
+create table Challenges (\
+challenge_id number(10),\
+college_id number(10)\
+);\
+\
+delete from Challenges;\
+insert into Challenges values (18765,11219);\
+insert into Challenges values (47127,11219);\
+insert into Challenges values (60292,32473);\
+insert into Challenges values (72974,56685);\
+select * from Challenges;\
+\
+\
+\
+\
+---------\
+Drop table View_Stats;\
+create table View_Stats (\
+challenge_id number(10),\
+total_views number(10),\
+total_unique_views number(10),\
+);\
+\
+delete from View_Stats;\
+\
+insert into View_Stats values (47127,26,19);\
+insert into View_Stats values (47127,15,14);\
+insert into View_Stats values (18765,43,10);\
+insert into View_Stats values (18765,72,13);\
+insert into View_Stats values (75516,35,17);\
+insert into View_Stats values (60292,11,10);\
+insert into View_Stats values (72974,41,15);\
+insert into View_Stats values (75516,75,11);\
+\
+\
+select * from View_Stats;\
+\
+\
+\
+---------\
+Drop table Submission_Stats;\
+create table Submission_Stats (\
+challenge_id number(10),\
+total_submissions number(10),\
+total_accepted_submissions number(10),\
+);\
+\
+delete from Submission_Stats;\
+\
+insert into Submission_Stats values (75516,34,12);\
+insert into Submission_Stats values (47127,27,10);\
+insert into Submission_Stats values (47127,56,18);\
+insert into Submission_Stats values (75516,74,12);\
+insert into Submission_Stats values (75516,83,8);\
+insert into Submission_Stats values (72974,68,24);\
+insert into Submission_Stats values (72974,82,14);\
+insert into Submission_Stats values (47127,28,11);\
+\
+select * from Submission_Stats;\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+select contests.contest_id, contests.hacker_id, contests.name,\
+sum(distinct stat.total_submissions) , sum(distinct stat.total_accepted_submissions),\
+sum(v.total_views), sum(v.total_unique_views)\
+from\
+Contests contests,\
+Colleges colleges,\
+Challenges challenges,\
+View_Stats v,\
+Submission_Stats stat\
+where contests.contest_id=colleges.contest_id \
+and challenges. college_id= colleges.college_id \
+and challenges.challenge_id=v. challenge_id\
+and stat.challenge_id=v. challenge_id\
+and stat.challenge_id=challenges. challenge_id\
+and \
+stat.total_submissions>0\
+and  stat.total_accepted_submissions>0\
+and v.total_views>0\
+and v.total_unique_views>0\
+group by contests.contest_id, contests.hacker_id, contests.name\
+order by contests.contest_id;\
+\
+\
+select * from Contests;\
+\
+select * from Colleges;\
+\
+select * from Challenges;\
+\
+select total_views, total_unique_views from View_Stats;\
+\
+select * from Submission_Stats;\
+\
+\
+\
+============================\
+\
+\
+\
+Drop table species;\
+create table species (\
+id number(10),\
+temp_preferences varchar2(10),\
+temp_limit number(10)\
+);\
+\
+select * from species;\
+\
+\
+Drop table ponds;\
+create table ponds (\
+id number(10),\
+city varchar2(10),\
+temperature number(10)\
+);\
+\
+select * from ponds;\
+\
+\
+\
+Drop table ducks;\
+create table ducks (\
+id number(10),\
+name  varchar2(10),\
+species_id number(10),\
+pond_id number(10)\
+);\
+\
+select * from ducks;\
+\
+\
+    select pond_id,count(pond_id) as happy_ducks from ducks,ponds,species\
+  where ducks.pond_id=ponds.id\
+  and ducks.species_id=species.id\
+  and ((ponds.temperature >= species.temp_limit) \
+  OR (ponds.temperature < species.temp_limit ) ) \
+  group by ducks.pond_id\
+  order by ducks.pond_id;\
+\
+\
+\
+create table kunal (id number(10));\
+\
+insert into kunal values (1);\
+insert into kunal values  (2);\
+insert into kunal values (3);\
+insert into kunal values (4);\
+select id  from kunal where ID%2=0\
+================\
+\
+OCCUPATION PROBLEM\
+\
+Drop table OCCUPATIONS;\
+create table OCCUPATIONS (\
+name  varchar2(10),\
+OCCUPATION  varchar2(10)\
+);\
+\
+select * from OCCUPATIONS;\
+\
+insert into OCCUPATIONS values('SAMANTHA','DOCTOR');\
+insert into OCCUPATIONS values('JENNY','DOCTOR');\
+\
+insert into  OCCUPATIONS values('JULYA','ACTOR');\
+insert into  OCCUPATIONS values('MARIA','ACTOR');\
+insert into OCCUPATIONS values('JANE','ACTOR');\
+\
+insert into  OCCUPATIONS values('MEERA','SINGER');\
+insert into OCCUPATIONS values('PRIYA','SINGER');\
+\
+\
+insert into OCCUPATIONS  values('JULYA','PROFESSOR');\
+insert into OCCUPATIONS values('KETTY','PROFESSOR');\
+insert into OCCUPATIONS values('CHRISTEEN','PROFESSOR');\
+\
+\
+SELECT NAME || ' (' || SUBSTR(OCCUPATION,1,1)|| ')'  FROM OCCUPATIONS 
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ORDER\cf3 \strokec3  \cf2 \strokec2 BY\cf3 \strokec3  \cf2 \strokec2 Name\cf3 \strokec3 ;\
+
+\f0\fs24 select concat(name,concat('(', concat(substr(occupation,1,1),')'))) from occupations order by name;\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 SELECT \cf4 \expnd0\expndtw0\kerning0
+concat (\cf0 \kerning1\expnd0\expndtw0 NAME \cf4 \expnd0\expndtw0\kerning0
+concat\cf0 \kerning1\expnd0\expndtw0  ' (' \cf4 \expnd0\expndtw0\kerning0
+concat\cf0 \kerning1\expnd0\expndtw0  SUBSTR(OCCUPATION,1,1) \cf4 \expnd0\expndtw0\kerning0
+concat\cf0 \kerning1\expnd0\expndtw0  ')'  FROM OCCUPATIONS 
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+ORDER\cf4  \cf2 BY\cf4  \cf2 Name\cf4 ;
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+SELECT 'There are a total of ' ||COUNT(name)||' '||OCCUPATION||'S' FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY COUNT(NAME);\
+SELECT 'There are a total of ' ||COUNT(name)||' '||OCCUPATION||'S' FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY COUNT(NAME);\
+select concat('There are a total of',concat(' ',concat(count(occupation),concat(' ',concat(lower(occupation),'s.'))))) as total from occupations\
+group by occupation order by total;\
+\
+\
+\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat5 \trbrdrt\brdrs\brdrw20\brdrcf6 \trbrdrl\brdrs\brdrw20\brdrcf6 \trbrdrb\brdrs\brdrw20\brdrcf6 \trbrdrr\brdrs\brdrw20\brdrcf6 
+\clvertalt \clcbpat5 \clwWidth18780\clftsWidth3 \clheight7176 \clbrdrt\brdrs\brdrw20\brdrcf6 \clbrdrl\brdrs\brdrw20\brdrcf6 \clbrdrb\brdrs\brdrw20\brdrcf6 \clbrdrr\brdrs\brdrw20\brdrcf6 \clpadt40 \clpadl40 \clpadb40 \clpadr40 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl320\partightenfactor0
+
+\f2 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Marks and trades\
+\
+\
+\
+Drop table Students;\
+create table Students (\
+ID NUMBER(10),\
+name  varchar2(10),\
+MARKS NUMBER(10)\
+);\
+\
+select * from Students;\
+-------\
+\
+Drop table Grades;\
+create table Grades (\
+Grade NUMBER(10),\
+MIN_MARK NUMBER(10),\
+MAX_MARK NUMBER(10)\
+);\
+\
+select * from Grades;\
+\
+\
+insert into Students values(1, 'julie',88);\
+insert into Students values(2, 'SAMANTHA',68);\
+\
+insert into Students values(3, 'maria',99);\
+insert into Students values(4, 'scarlet',78);\
+\
+insert into Students values(5, 'ashley',63);\
+insert into Students values(6, 'jane',81);\
+\
+\
+\
+----\
+\
+insert into Grades values(1, 0,9);\
+insert into Grades values(2, 10,19);\
+\
+insert into Grades values(3, 20,29);\
+insert into Grades values(4, 30,39);\
+\
+insert into Grades values(5, , 40,49);\
+insert into Grades values(6, , 50,59);\
+\
+insert into Grades values(7, 60,69);\
+insert into Grades values(8, 70,79);\
+\
+insert into Grades values(9, 80,89);\
+insert into Grades values(10, 90,99);\
+\
+\
+\
+\
+\
+\
+\
+\pard\intbl\itap1\pardeftab720\sl460\partightenfactor0
+
+\f3\fs30 \cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.io.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.math.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.security.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.text.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.util.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.util.concurrent.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.util.function.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.util.regex.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0java.util.stream.*;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0\cf7 \strokec7 static\cf2 \strokec2 \'a0java.util.stream.Collectors.joining;\cb1 \
+\cf7 \cb8 \strokec7 import\cf2 \strokec2 \'a0\cf7 \strokec7 static\cf2 \strokec2 \'a0java.util.stream.Collectors.toList;\cb1 \
+\
+\
+\
+\cf7 \cb8 \strokec7 class\cf2 \strokec2 \'a0Result\'a0\{\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\cf9 \strokec9 /*\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\'a0Complete\'a0the\'a0'getUmbrellas'\'a0function\'a0below.\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\'a0The\'a0function\'a0is\'a0expected\'a0to\'a0return\'a0an\'a0INTEGER.\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\'a0The\'a0function\'a0accepts\'a0following\'a0parameters:\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\'a0\'a01.\'a0INTEGER\'a0requirement\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*\'a0\'a02.\'a0INTEGER_ARRAY\'a0sizes\cf2 \cb1 \strokec2 \
+\cf9 \cb8 \strokec9 \'a0\'a0\'a0\'a0\'a0*/\cf2 \cb1 \strokec2 \
+\
+\cb8 \'a0\'a0\'a0\'a0\cf7 \strokec7 public\cf2 \strokec2 \'a0\cf7 \strokec7 static\cf2 \strokec2 \'a0\cf7 \strokec7 int\cf2 \strokec2 \'a0getUmbrellas(\cf7 \strokec7 int\cf2 \strokec2 \'a0requirement,\'a0List<Integer>\'a0sizes)\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\cf9 \strokec9 //\'a0Write\'a0your\'a0code\'a0here\cf2 \cb1 \strokec2 \
+\cb8 \'a0\'a0\'a0\'a0\cf7 \strokec7 int\cf2 \strokec2 \'a0val=-\cf9 \strokec9 1\cf2 \strokec2 ;\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\cf9 \strokec9 //\'a0Write\'a0your\'a0code\'a0here\cf2 \cb1 \strokec2 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 for\cf2 \strokec2 (\cf7 \strokec7 int\cf2 \strokec2 \'a0size:sizes)\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 if\cf2 \strokec2 (requirement%size==\cf9 \strokec9 0\cf2 \strokec2 )\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0val=requirement/size;\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 break\cf2 \strokec2 ;\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 return\cf2 \strokec2 \'a0val;\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\}\cb1 \
+\
+\cb8 \}\cb1 \
+\
+\cf7 \cb8 \strokec7 public\cf2 \strokec2 \'a0\cf7 \strokec7 class\cf2 \strokec2 \'a0Solution\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\cf7 \strokec7 public\cf2 \strokec2 \'a0\cf7 \strokec7 static\cf2 \strokec2 \'a0\cf7 \strokec7 void\cf2 \strokec2 \'a0main(String[]\'a0args)\'a0\cf7 \strokec7 throws\cf2 \strokec2 \'a0IOException\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0BufferedReader\'a0bufferedReader\'a0=\'a0\cf7 \strokec7 new\cf2 \strokec2 \'a0BufferedReader(\cf7 \strokec7 new\cf2 \strokec2 \'a0InputStreamReader(System.in));\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0BufferedWriter\'a0bufferedWriter\'a0=\'a0\cf7 \strokec7 new\cf2 \strokec2 \'a0BufferedWriter(\cf7 \strokec7 new\cf2 \strokec2 \'a0FileWriter(System.getenv(\cf10 \strokec10 "OUTPUT_PATH"\cf2 \strokec2 )));\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 int\cf2 \strokec2 \'a0requirement\'a0=\'a0Integer.parseInt(bufferedReader.readLine().trim());\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 int\cf2 \strokec2 \'a0sizesCount\'a0=\'a0Integer.parseInt(bufferedReader.readLine().trim());\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0List<Integer>\'a0sizes\'a0=\'a0IntStream.range(\cf9 \strokec9 0\cf2 \strokec2 ,\'a0sizesCount).mapToObj(i\'a0->\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 try\cf2 \strokec2 \'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 return\cf2 \strokec2 \'a0bufferedReader.readLine().replaceAll(\cf10 \strokec10 "\\\\s+$"\cf2 \strokec2 ,\'a0\cf10 \strokec10 ""\cf2 \strokec2 );\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\'a0\cf7 \strokec7 catch\cf2 \strokec2 \'a0(IOException\'a0ex)\'a0\{\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 throw\cf2 \strokec2 \'a0\cf7 \strokec7 new\cf2 \strokec2 \'a0RuntimeException(ex);\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\})\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0.map(String::trim)\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0.map(Integer::parseInt)\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0.collect(toList());\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \strokec7 int\cf2 \strokec2 \'a0result\'a0=\'a0Result.getUmbrellas(requirement,\'a0sizes);\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bufferedWriter.write(String.valueOf(result));\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bufferedWriter.newLine();\cb1 \
+\
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bufferedReader.close();\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bufferedWriter.close();\cb1 \
+\cb8 \'a0\'a0\'a0\'a0\}\cb1 \
+\cb8 \}\cb1 \
+\
+\pard\intbl\itap1\pardeftab720\sl320\partightenfactor0
+
+\f2\fs24 \cf2 \
+\
+\
+\
+\
+\
+\
+\
+\cell \lastrow\row
+}

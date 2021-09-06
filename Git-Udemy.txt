@@ -1,0 +1,30 @@
+init
+	git add [Local Stagin]
+		git commit 	[commit to Local repository]
+			git push actually make a push to remote repository
+
+git pull - pull to our local git repository
+
+git version
+git help
+
+Just press q to exit
+
+>git config --global user.name "kunal"
+>git config --global user.email "kunal@1.com"
+>git config --global --list 			:	 important global settings are listed Kunal
+>cat ~/.gitconfig						:	 ~ specifies home directory
+
+>ls -a 		: all the files 
+
+>mate README.md .md means markdown as an extension , just a text file
+mate is textmate - 
+
+1. git status 
+	-	A lot of information
+	a) We are in which branch
+	b) Untracked files - which actually are not yet part of git, i.e git is actually not tracking it
+2. git add 
+	- Adds a file to a staging area , also called git index
+	>git add . 	to add all files
+	>git add specific_file_name

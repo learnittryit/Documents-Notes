@@ -1,0 +1,106 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh14280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 https://blog.angular-university.io/angular-jwt/\
+\
+JWT - JSON Web Tokens\
+\
+Pre-requisite\
+\'97\'97\'97\'97\'97\'97\'97\
+1. Use HTTP\'92s for all the requests\
+\
+2. SERVER \'97\'97\'97Every request should have signed JWT , before reaching to server\
+				[JWT is small + signed serialised JSON  ] \
+\
+3. CLIENT \'97\'97\'97 Client have to obtain signed JWT before making requests , as every request must include signed  JWT\'92s\
+\
+	Client Obtains JWT \'97\'97\'97\'97\'97\'97\'97\'97 Server Recives \
+	Client Needs Internet \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97 Server does not , as it stores JWT\
+\
+\
+Important \
+\'97\'97\'97\'97\'97\'97\'97\'97\
+\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+1. Deploy JWT secret at servers - In order to verify JWT Signature , the secrete must be deployed at server\
+\
+2. Server decides and tell client \'97\'97\'97\'97 If client is authorised to access a resource or execute a following operation\
+\
+\
+[	 HEADER 		BODY-PAYLOAD	SIGNATURE	]\
+\
+\
+HEADER - Information how the JWT is encoded\
+	Information means what type of Hashing Mechanism is used to generate JWT token\
+\
+\
+\'97\'97\'97\'97\
+Header has 
+\f1\b \ul 2
+\f0\b0 \ulnone  parts \
+\{\
+	type - JWT : this is just an information\
+	Which algorithm is used to generate token - e.g HMAC SHA256\
+\}\
+\
+\
+Payload - Ye sab hai\
+\
+\
+User name\'a0: ANTAES\\kunal.rai\
+Password\'a0: Antaes.2021$$\
+\
+\
+\'97\'97\'97\'97\
+\
+\
+\
+\
+\
+\
+Receiver - 	Validates the content of payload , by validating the signature. \
+			Header - Contains the information of JWT\
+			\{\
+				\'93alg\'94:\'94RS256\'94,		This is a signature type used for token\
+				\'93typ\'94:\'94JWT\'94\
+			\}\
+\
+\
+\
+\
+\
+PAYLOAD / BODY - \'93MEAT	\'97\'97	> \{	CLAIMS LIVES HERE  \} \'94 - No need to put important information , as JWT is not encrypted\
+\
+SIGNATURE \'97 Provides the security.  Its the last part and is also called
+\f1\b  \'93MAC - Message Authentication Code \'93\
+			So Header - has info about JwT, which algorithm we will use for signature , But actual signature is the last part , and payload is a data
+\f0\b0 \
+\
+\
+\
+\
+====================================================\
+\
+Client \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97 Application Server 			Authentication External Server \{ LDAP or AUTH0 or anything\}\
+\
+App Server and Auth Server are completely independent\
+App server is stateless , and does not need to store secrete key or tokens\
+\
+Understanding - JWT its a JSON payload containing a claim\
+Key property is , to authenticate we just have to look - no need to store anywhere , or contact third party server.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Because 
+\f0\b0 it carries 
+\f1\b MAC ( 
+\f0\b0 Message Authentication Code
+\f1\b  )\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+}

@@ -1,0 +1,118 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 Helvetica-Oblique;
+\f3\fswiss\fcharset0 Helvetica-BoldOblique;}
+{\colortbl;\red255\green255\blue255;\red100\green100\blue100;\red127\green0\blue85;\red106\green62\blue62;
+\red42\green0\blue255;\red63\green127\blue95;}
+{\*\expandedcolortbl;;\csgenericrgb\c39216\c39216\c39216;\csgenericrgb\c49804\c0\c33333;\csgenericrgb\c41569\c24314\c24314;
+\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c24706\c49804\c37255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15180\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+1. @Test(expected =NulpointerException.class) => means pass if null appeares\
+2. \cf2 @Test\cf0 (timeout = 100) \'97 time out in milli second , performance testing => pass if timeout does not happens within 100 milliseconds\
+3. @BeforeClass = static method , rest all are public and void @Before, @After etc\
+4. assertEquals,assertArrayEquals,assertFalse,assertTrue \'97 > all are ok \
+5. Parameterized arrays , 3 steps \'97> beauty of this is by using RunWith(Parameterized.class) and @parameters annotation, automatically the constructors get the values set in it\
+	a) RunWith(Parameterized.class)\
+	b) create @parameters class for passing parameters\
+	c) create a constructors and pass parameters\
+\
+ @RunWith(Parameterized.class)\
+    ClassName()\{\
+\
+	private String actual;\
+	private String expected;\
+	ClassConstructore(String actual,Striing expected)\{\
+		this.actual=actual;\
+		this.expected=expected;\
+	\}\
+		//\
+\pard\pardeftab720\partightenfactor0
+\cf0 	\cf2 @Parameters\cf0 \
+	
+\f1\b \cf3 public
+\f0\b0 \cf0  
+\f1\b \cf3 static
+\f0\b0 \cf0  Collection<String[]> testConditions() \{\
+		\
+		String[][]\cf4 expected_actual\cf0 = \{\
+				\{\cf5 "AABC"\cf0 ,\cf5 "BC"\cf0 \},\
+				\{\cf5 "ABAB"\cf0 ,\cf5 "ABAB\'94\cf0 \},\
+				\{\'93expected\'94,\'94actual\'94\}\
+		\};\
+		\
+		
+\f1\b \cf3 return
+\f0\b0 \cf0  Arrays.
+\f2\i asList
+\f0\i0 (\cf4 expected_actual\cf0 );\
+	\}	\}	\
+Note remember : @parameters , number of elements returning  by method = number of constructor arguments . Else exception will appear\
+java.lang.IllegalArgumentException: wrong number of arguments\
+ @parameters ka Matlab hi constructor parameters hai\
+\
+
+\f1\b \ul Question : 
+\f3\i \ulnone When to use Parameterized annotation
+\f1\i0 \ul  - > Answer :  
+\f3\i \ulnone When same set of values can be used for expected, actual values
+\f0\i0\b0 \
+\
+6. Test Suit\
+	Running a group of test classes - a specific group\
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+Right click select \'97>junit	suit\
+\
+@RunWith\cf0 (Suite.
+\f1\b \cf3 class
+\f0\b0 \cf0 )\
+\cf2 @SuiteClasses\cf0 (\{ QUickBeforeAfterTest.
+\f1\b \cf3 class
+\f0\b0 \cf0 , StringOperationsParameterizedTestBoolean.
+\f1\b \cf3 class
+\f0\b0 \cf0 ,\
+		StringOperationsTest.
+\f1\b \cf3 class
+\f0\b0 \cf0  \})\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 public
+\f0\b0 \cf0  
+\f1\b \cf3 class
+\f0\b0 \cf0  AllTests \{\
+\
+\}\
+\
+\
+Junit best practices and guide lines\
+\
+\
+\
+\
+\
+======================== MOCKITO==================\
+1. Stubs = a predefined data , can be an implementation of interface also\
+Problems - very time we need to change the code to pass the pre defined values\
+\
+2. Therefore using Mocking - values can be set up dynamically\
+BDD Mockito\
+\
+Mock(className.class) its a method in a Mockito class > create a mock object of a class or an interface\
+\
+2. \cf6 @RunWith(MockitoJUnitRunner.class)  for annotation based mock or mock() if no annotation is needed - else it will thrown a null pointer exception\
+Everything is tested using asset only , but values are set using when(we call this).thenReturn(This) \cf0 \
+\
+\
+5498341641429408\
+\
+\
+\
+\
+\
+\
+\
+\
+}
