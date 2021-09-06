@@ -24,12 +24,23 @@ mate is textmate -
 	-	A lot of information
 	a) We are in which branch
 	b) Untracked files - which actually are not yet part of git, i.e git is actually not tracking it
-2. git add 
+2.	=================
+		1. git add
+		2. git add and commit in one line
+	================= 
+
+OPTION 1	= git add
+---------
+git add 
 	- Adds a file to a staging area , also called git index
 	>git add . 	to add all files
 	>git add specific_file_name
 	
  2.1 - git add > even to add back the modified files	
+ 
+OPTION 2 = git add and commit
+---------
+ 2.2 git commit -a
 	
 3. "changes to be commited" - means changes are present in index or in staging area to be committed
 
