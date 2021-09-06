@@ -28,3 +28,34 @@ mate is textmate -
 	- Adds a file to a staging area , also called git index
 	>git add . 	to add all files
 	>git add specific_file_name
+	
+ 2.1 - git add > even to add back the modified files	
+	
+3. "changes to be commited" - means changes are present in index or in staging area to be committed
+
+4. Un-stage the files again
+	>git rm --cached .
+	>git rm --cached file_name
+	
+5. git commit -m "message for commit"
+6. git status - tells so much actually
+	-untracked - not preset in staging area yet
+	-nothing to commit
+	-changes to be commited means tracked are in stating area	
+7. Check git history
+	>git log
+	It shows the entire history
+	 
+	a) Hash a unique hash associated to a commit -commit 7c2fadc170b634339e0af375e4e869d51afc92e0 (HEAD -> master)
+		Author: learnittryit <learnittryit@gmail.com>
+		Date:   Mon Sep 6 12:57:00 2021 +0800
+	b) messgage - Kunal Notes of learnings -meri GEETA	
+	
+8. git help log - lot of options
+	a) Get a compact oneline view of git repository history
+		user@Users-Air Documents-Notes % git log --oneline --decorate --graph --color
+		* 7c2fadc (HEAD -> master) Kunal Notes of learnings -meri GEETA
+
+9. when we remove a file , then we need to add -u abreast with add
+		>git rem file_name_which_was_commited_earler
+		>git add -u					: simply to tell get this is an update and has to be removed and now staged
