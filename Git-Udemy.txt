@@ -73,6 +73,13 @@ OPTION 2 = git add and commit
 		>git rem file_name_which_was_commited_earler
 		>git add -u					: simply to tell get this is an update and has to be removed and now staged
 		
+
+9.1 Basically if we add git to the command , git will automatically stage it
+	be it remove or move . Eg for move folder
+	>git mv thisfile to_this_file_or_folder
+	This will move as well as stage it . 
+
+
 10. Git Unstage the staged file 		
 
 	(a) reset
@@ -82,8 +89,15 @@ OPTION 2 = git add and commit
 
 
 
+11. Ignore files - may be we dont want to add some files or say wrong files to git
+	make a file with extention .getignore file
+	Git will always ignore these files to be moved to repository
+	>ls 		:will not show these files
+	>ls -a 		:will show
 
-
+========================
+Ch-2 Git remote
+========================
 
 
 
