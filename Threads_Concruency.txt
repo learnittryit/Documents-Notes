@@ -1,2 +1,0 @@
-http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html
-Bibel -> https://github.com/openjdk-mirror/jdk7u-jdk/blob/f4d80957e89a19a29bb9f9807d2a28351ed7f7df/src/share/classes/java/util/concurrent/Executors.java

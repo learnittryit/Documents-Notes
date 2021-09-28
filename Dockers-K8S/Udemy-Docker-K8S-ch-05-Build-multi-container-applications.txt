@@ -1,6 +1,0 @@
-Application building 3 different applications
-	1. MongoDB 					- DB
-	2. Front end React JS		- Front End
-	3. Node based REST API		- Back End
-	
-	[DB] <-	-> [REST]<- ->[BackEndn]

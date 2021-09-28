@@ -1,3 +1,0 @@
-We can go to extentions in the left panal and then download the dependencies like for 
-Docker or Angular , so we can get the support for auto idea while writing code
-
