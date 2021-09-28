@@ -1,0 +1,156 @@
+====================================================================================================================
+	REDIS - REMOTE DICTIONARY SERVICE
+====================================================================================================================
+
+Redif Understanding-- Please read the file /Users/user/Desktop/Redis/redis-6.0.9/README.md
+
+Biggest Advantages
+1. Persistence - unlike other caches , REDIS can persist data on SSD, even if application is shut down.
+2. More Datatypes
+
+
+1. We need to configure Redis
+	- .properties
+	- config.java
+	@EnableCaching
+	@Cachable - its a key value  pair {key:value} 
+2. Controller - Caching is applied here , as here the values are cached , services simply uses the cached values
+	@Cahceable
+3. @Cashput - this is updating cache 
+	Update a cache whenever the actual value is updated
+4. @CacheEvict - clearing cache
+	Anything removed/deleted from DB, cache must be cleared
+5. What should be cached - which does not change often and frequently used should be cached
+	static content, images/logos,style sheets, hardly changing DB content
+6. What should not be cached -
+	HTML content - becuase its a live user experience, and wrong caching can be a major problem
+	
+Java T point Notes
+------------------
+
+1. No-sql DB
+2. Open source in memory structure store
+3. 
+	In memory DB
+	Message Broker
+	cache
+4. Client - Server
+	Server - store data in memory and serve to client	
+	redis-console-client - get the dtata from redis-console-server
+	
+Important Concepts
+
+1. Speed : stores data in primary memory therefore fast.
+			Redis supports pipelining of commands - we can pass multiple values in single command, to speed up communication
+			with client libraries	
+2. Persistence : Memory-Disk : Asynchronously saved on the disk
+				policy could be based on many factors to move data from Memory (RAM-Redis-console-server)to Disk
+					a) elapsed time
+					b) number of updates
+2.a) Append-only-file : Persistence mode but its not recommended 
+	One file append-only-file is created where data is appended in the end of the file, in 3 wayss
+		a) always - as soon as data goes in REDIS its writen to file (No data Loss but performance degrade)
+		b) every sec - after every sec data is written from REDIS to file (Redis is smart to adjust its write rate with file write rate, 
+			can be data loss from previous sec to current sec)
+		c) no - OS will decide (OS will sync , but can cause slow if REDIS is full then write can be blocked)								
+2.b) Its a 3 step process 
+	Write from Redis to Buffer then Buffer to File async
+	[Redis] file.write()----->[Buffer] file.flush(async)---[file system]
+3. DS - multiple set,sorted-set,hashes,string					
+4. Master-Slave Replication - one line configuration to setup
+5. Sharding - Logical distribution of data sets therefore its a distributed cache
+	REDIS (Server)-- 	Instance-1 {Customer related Data}
+			 			Instance-2 {Client related data}
+			 			
+	Sharding is not replication nor logical grouping and holding of data in multiple group specific instances.
+	Sharding is subseting is same colossal Dataset		 			
+	
+6. 	REDIS -Primary Memory (RAM)	- exensive
+	DBMS - Secondry Memory (DB) - cheap
+	
+	
+	
+7. Amazing Explanation -https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6 
+Sharding - 	Also called horizontal partioning
+	Main DB -  Data C=100%
+		Now storing same data in different DB's by subseting it.
+			DB1 - 1-50% of C
+					---- > Finally both will combine to form C
+			DB2 - 51-100% of C
+7.a -
+[Sharding = Horisontal Partioning ]-
+
+ Sirf Data split hua hai Structure nahin. Ek DB mein first 50 rows chali gyee and dusre mein next 50.
+				 But finally Number of Tables same hi hain dono DB mein
+				 [Table_Customer,Table_Client]
+				 				 				
+7.b Verticle Partioning= Domain Specific , recommended in micro services architecture
+  - Tables hi split hoo gyee 
+							Earlier DB has 2 tables [Table_Customer, Table_Client]
+							Now 2 DB's and both have different structures
+								DB1- Table_Customer (all 100%)
+								DB2- Table_Client	(all 100%)
+	
+8. 
+8.1 Start server 
+	user@Users-Air src % ./redis-server
+8.2 Start client
+	user@Users-Air src % ./redis-cli 
+	127.0.0.1:6379> 		
+9. Configurations are present in file 
+	redis.conf at root directory	
+10. in src folder , get all the configurations
+config get *
+11. Data types - 5 types
+	String		- SET/GET
+	Hash Hashmap only - Map<String,String> - HMSET/HMGET/HMGETALL,hvals,hkeys..
+	Set 		sadd name_of_set/ smembers name_of_set
+	Sortedset
+	Lists	lpush / lrange list_name start_index end_index
+	
+12. SET will set the  value
+	GET will get the values 
+	e.g 
+	>set names kunal >output=ok
+	>get names > output=kunal
+		
+		
+13. Some important points 
+	1. expire key - we can set a time when key should expire
+	2. persist key - no expiration
+	3. pttl key- check how much time is left for a key to expire
+	4. ttl key- time to live 
+	5. type key - what type of key is this		
+	
+	
+14. Batch of commands - all the commands in MULTI and EXEC will execute uninterrupted
+MULTI
+//
+//
+EXEC	
+
+15. echo message - just a print command
+16. ping > pong to see connection
+17. Eviction Policies of Redis
+	(Volatile is associated to Expired time set)
+(Default)	Volatile-LRU : Least Recently used with Expired time set
+
+noeviction - throws error
+allkeys-lru
+allvalues-lru
+allkeys-random
+volatile-lru
+volatile-lfu
+volatile-random
+volatile-ttl - least time to live set .
+
+
+18. ROF (Redis on flash) - to avoid setting an eviction policy
+	hot data remains on RAM
+	rest remains on SSD/HDD
+
+	
+19. REDIS Vs EHCache
+REDIS is a shared cache - means it supports multiple data structure like set,list etc, and hence can be shared between
+	applications of different language . But EHcache is a memory block and hence cannot be shared
+	

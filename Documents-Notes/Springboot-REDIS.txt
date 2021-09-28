@@ -1,0 +1,114 @@
+====================================================================================================================
+	REDIS - REMOTE DICTIONARY SERVICE
+	RE -REMOTE
+	DI-DICTIONARY
+	S- SERVICE
+	
+	HashOperations - basically REDIS work on dictionary concept , where REDIS hashes are maps with sting key sting value
+	Redis Hash is a redis data structure - HashOperation Interface initiate the CRUD operations
+
+No External server need to setup
+Spring Data Redis provides an integrated redis server , just like apache server
+dependency - <artifactId>embedded-redis</artifactId>
+
+https://www.baeldung.com/spring-data-redis-tutorial
+https://www.baeldung.com/spring-embedded-redis
+see link - https://medium.com/swlh/integrate-your-spring-boot-with-a-redis-cache-system-ff707e61e75e
+====================================================================================================================
+
+
+1. [Message Broker] + [In memory DB] + Cache
+
+2. [Service A]		{REDIS-CACHE}  		[Service B]
+if(Data in Cache){
+	//get from Cache
+}else{
+	//get from Service
+}
+
+
+3. Steps:
+	1> Add REDIS dependencies 
+		a. spring-boot-starter-data-redis (Redis)
+		b. common-pools2 (Redis helpers)
+		c. Jedis (Communicate with REDIS server / redis.clients)
+	2> Establish a connection with REDIS server.(host and port using jedisconnectionfactory or LettuceConnectionFactory or RaddisonConnectionFactory)
+		Through JEDIS connection factory 
+		{There are 2 ways 
+			//Way1 we can inject with @Bean to set host and port 
+					see link - https://medium.com/swlh/integrate-your-spring-boot-with-a-redis-cache-system-ff707e61e75e
+			//Way2 entry in pom - entry in application.properties to set port and host
+					spring.redis.host=localhost
+					spring.redis.port=6379
+		}	
+	3> Inject RedisTemplate Object - set connection factory and value serializer 
+		see file -/Users/user/Desktop/workspaceRedis/SpringbootRedisUsingJedis/src/main/java/org/jcg/springboot/redis/config/RedisConfig.java	
+		
+	4> Very important - current context must be passed for every hashoperation. i.e read/write/delete/update
+		e.g private static final String REDIS_ENTITY = "address";
+		
+	5> After the bean is constructed i.e injected , we need to instantiate redisTemplate.opsForHash
+	    @PostConstruct
+    private void init(){
+        hashOperations = redisTemplate.opsForHash();
+    }
+	
+	6> Manually need to check if the address is available in cache then return cached else request from other service	
+	
+		Questions : 
+		
+		1. Question HashOperations - for CRUD operations HashInterface is used provided by spring-data-redis project.
+		Basically wrapper given by spring to do CRUD operation
+		2. Question RedisTemplate - Template Design pattern - to facilitiate using REDIS	
+		RedisTemplate its a calss	
+		Templates - these are classes providing an abstraction level , and removing the boilerplate code
+		3. What is Hashes - Its a REDIS data structure
+		
+		
+4. Different hashoperations are :
+	hashoperations.put - update
+	hashoperations.delete
+	hashoperations.save - insert
+	hashoperations.entries - entire hashstore
+		
+5. RedisTemplate class - automatically serialize/deserialize an object
+	similar to Jacksom Objectmapper 
+	
+6. Jedis - Java Redis Client Library ------> similarly lettuce and raddison
+	This is a java based client library for REDIS
+	
+	Just like commandline we can use in java
+		e.g 
+			jedis.set(stringkey,stringvalue)
+			jdis.get(stringkey)
+			
+			jedis.lpush("listName",value1)
+			jedis.lpush("listName",value2)
+			jedis.rpop() - value1
+			jedis.range(1,2)- value1,value2	....... similarly for sets and hashes
+			sets -sadd / smembers /sismember
+			hashes -jedis.hset("user#1",name,peter)
+					jedis.hset("user#1",age,21)
+				 / jedis.hget("user#1")
+			
+hashes - is multiple key values associated to one key
+	e.g all key values are assosciate to user#1		
+	
+	
+	
+7. Pipeliling 
+	Multi
+	-----	
+	exe
+	
+	In Java 
+	Pipeline p = jedis.pipelined();
+		p.sadd
+		p.lpush
+		........
+		........
+	p.sync()
+	
+	
+8. JedisConnectionFactory is needed - Connection factory creating Jedis based connections.
+ 	so we can initiate jedis based connections	
