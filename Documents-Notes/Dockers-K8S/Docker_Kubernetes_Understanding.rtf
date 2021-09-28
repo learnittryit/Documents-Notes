@@ -1,0 +1,1265 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fmodern\fcharset0 CourierNewPS-BoldMT;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 Menlo-Bold;\f5\fnil\fcharset0 Menlo-Italic;
+\f6\fnil\fcharset0 Menlo-BoldItalic;\f7\fmodern\fcharset0 Courier;\f8\fswiss\fcharset0 Helvetica-Bold;
+\f9\fnil\fcharset0 HelveticaNeue-Bold;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red26\green26\blue26;\red96\green140\blue196;
+\red0\green0\blue0;\red0\green0\blue0;\red33\green255\blue255;\red67\green10\blue31;\red0\green0\blue255;
+\red255\green255\blue10;\red5\green68\blue254;\red73\green0\blue1;\red228\green58\blue65;\red239\green240\blue242;
+\red0\green0\blue0;\red251\green231\blue63;\red14\green0\blue45;\red0\green0\blue0;\red246\green250\blue211;
+\red194\green229\blue166;\red202\green219\blue254;\red236\green186\blue254;\red251\green2\blue7;\red32\green0\blue99;
+\red255\green255\blue255;\red52\green0\blue71;\red251\green2\blue255;\red64\green11\blue217;\red0\green128\blue128;
+\red63\green127\blue127;\red53\green74\blue91;\red217\green11\blue5;\red38\green139\blue210;\red42\green161\blue152;
+\red63\green105\blue30;\red211\green54\blue130;\red46\green45\blue42;\red33\green255\blue6;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c13333\c13333\c13333;\cssrgb\c44706\c62353\c81176;
+\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c0\c99144\c100000;\cssrgb\c33613\c6359\c16184;\cssrgb\c1680\c19835\c100000;
+\cssrgb\c99942\c98555\c0;\cssrgb\c0\c38136\c99824;\cssrgb\c36221\c2639\c0;\cssrgb\c92549\c32157\c32157;\cssrgb\c94902\c95294\c96078;
+\cssrgb\c0\c0\c0\c87059;\cssrgb\c98824\c91373\c30980;\cssrgb\c6643\c1990\c23261;\csgray\c0;\cssrgb\c97148\c98050\c85989;
+\cssrgb\c80097\c91038\c70905;\cssrgb\c82956\c88909\c99731;\cssrgb\c94438\c78969\c99727;\cssrgb\c100000\c14913\c0;\cssrgb\c17067\c7357\c46453;
+\csgray\c100000;\cssrgb\c26879\c5470\c34975;\cssrgb\c100000\c25279\c100000;\cssrgb\c32308\c18668\c88227;\csgenericrgb\c0\c50196\c50196;
+\csgenericrgb\c24706\c49804\c49804;\cssrgb\c26667\c36471\c43137;\cssrgb\c88946\c14202\c0;\csgenericrgb\c14902\c54510\c82353;\csgenericrgb\c16471\c63137\c59608;
+\cssrgb\c30831\c47797\c15540;\csgenericrgb\c82745\c21176\c50980;\cssrgb\c23529\c23137\c21569;\cssrgb\c0\c97680\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15700\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1. Deploy on Kubernates Clusters\
+\
+>> kubectl create deployment NameOfService \'97image=dockerImageName\
+Explanation - SImplely create deployment , means deploy from the image which is a docker image\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl create deployment hello-world-rest-api --image=in28min-hello-world-rest-api:0.0.1.RELEASE        \cb1 \
+\cb3                                \cb1 \
+\cb3 deployment.apps/hello-world-rest-api created
+\f0\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+2. Services and Ingress - Expose to the outside world\
+\
+>> kubectl expose deployment deploymentName \'97type=LoadBalancer \'97 port =8080\
+Explanation - Its just telling that expose the deployment with deployment name as \'93Some Name \'94 as a type \'93Load Balancer \'94 and on the port \'938080\'94\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080\cb1 \
+\cb3 service/hello-world-rest-api exposed\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb6 \
+Question- How does Kubernates know from where the docker image is to be pulled , I just gave the image name and noting else\
+\'93I copied from git\'94 - docker pull in28min/hello-world-rest-api:0.0.4-SNAPSHOT\
+I am not clear , as I gave the image for non existing image also but it got deployed\
+	Q1- Non existing image is deployed\
+	Q2 - Existing image is pulled from where , where did we give the linkage of docker image\
+\
+\
+1. What is pod / service / replicates / deployment / \
+2. Replicas - Its just like ISR[In Sync Replicas of Apache Kafka]\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $   kubectl scale deployment hello-world-rest-api-correct --replicas=3\cb1 \
+\cb3 deployment.apps/hello-world-rest-api-correct scaled\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \
+\
+
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf7 \cb8 \ul \ulc7 ERROR to LEARN
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \AppleTypeServices \cf7 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % kubectl expose deployment kunals-new-image --type=Loadalancer --port=8090\
+The Service "kunals-new-image" is invalid: spec.type: 
+\f4\b Unsupported value: "Loadalancer": supported values: "ClusterIP", "ExternalName", "LoadBalancer", "NodePort"\
+
+\f3\b0 user@Users-Air / % kubectl expose deployment kunals-new-image --type=Loadbalancer --port=8090\
+The Service "kunals-new-image" is invalid: spec.type: Unsupported value: "Loadbalancer": supported values: "ClusterIP", "ExternalName", "LoadBalancer", "NodePort"\
+user@Users-Air / % kubectl expose deployment kunals-new-image --type=LoadBalancer --port=8090\
+service/kunals-new-image exposed\
+user@Users-Air / % \
+\
+\
+user@Users-Air / % kubectl expose deployment kunalrai1005-hello-world --type=LoadBalancer --port=8090\
+
+\f4\b \ul Error from server (AlreadyExists): services "kunalrai1005-hello-world" already exists
+\f3\b0 \ulnone \
+user@Users-Air / % kubectl expose deployment kunalrai1005-hello-world --type=LoadBalancer --port=8090
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \cb10 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb8 \
+\pard\pardeftab720\partightenfactor0
+\cf11 \cb12 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \AppleTypeServices \cf11 \kerning1\expnd0\expndtw0 \CocoaLigature0 n machine\
+12m         Normal    EnsuringLoadBalancer    service/kunals-new-image                         Ensuring load balancer\
+12m         Normal    EnsuredLoadBalancer     service/kunals-new-image                         Ensured load balancer\
+9m47s       Normal    DeletingLoadBalancer    service/kunals-new-image                         Deleting load balancer\
+9m22s       Normal    DeletedLoadBalancer     service/kunals-new-image                         Deleted load balancer\
+9m20s       Normal    Killing                 pod/kunals-new-image-6fc7c75f57-kd7js            Stopping container hello-world-rest-api\
+8m42s       Normal    ScalingReplicaSet       deployment/kunals-new-image                      Scaled up replica set kunals-new-image-6fc7c75f57 to 1\
+8m42s       Normal    Scheduled               pod/kunals-new-image-6fc7c75f57-jrm27            Successfully assigned default/kunals-new-image-6fc7c75f57-jrm27 to gke-kunal-cluster-1-default-pool-2fad96c0-4rs3\
+8m42s       Normal    SuccessfulCreate        replicaset/kunals-new-image-6fc7c75f57           Created pod: kunals-new-image-6fc7c75f57-jrm27\
+8m41s       Normal    Created                 pod/kunals-new-image-6fc7c75f57-jrm27            Created container hello-world-rest-api\
+8m41s       Normal    Pulled                  pod/kunals-new-image-6fc7c75f57-jrm27            Container image "kunalrai1005/hello-world-rest-api:0.0.4-SNAPSHOT" already present on machine\
+8m41s       Normal    Started                 pod/kunals-new-image-6fc7c75f57-jrm27            Started container hello-world-rest-api\
+35s         Normal    ScalingReplicaSet       deployment/my-kunal-another-service              Scaled up replica set my-kunal-another-service-78bd9f5d9b to 1\
+35s         Normal    Scheduled               pod/my-kunal-another-service-78bd9f5d9b-5fpw6    Successfully assigned default/my-kunal-another-service-78bd9f5d9b-5fpw6 to gke-kunal-cluster-1-default-pool-2fad96c0-4rs3\
+35s         Normal    SuccessfulCreate        replicaset/my-kunal-another-service-78bd9f5d9b   Created pod: my-kunal-another-service-78bd9f5d9b-5fpw6\
+34s         Normal    Started                 pod/my-kunal-another-service-78bd9f5d9b-5fpw6    Started container hello-world-rest-api\
+34s         Normal    Created                 pod/my-kunal-another-service-78bd9f5d9b-5fpw6    Created container hello-world-rest-api\
+34s         Normal    Pulled                  pod/my-kunal-another-service-78bd9f5d9b-5fpw6    Container image "kunalrai1005/hello-world-rest-api:0.0.4-SNAPSHOT" already present on machine\
+user@Users-Air / % 
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl get pods\cb1 \
+\cb3 NAME                                            READY   STATUS             RESTARTS   AGE\cb1 \
+\cb3 hello-world-rest-api-7d679c676d-64zvq           0/1     ImagePullBackOff   0          24m\cb1 \
+\cb3 hello-world-rest-api-correct-65c4db9f97-86tkg   1/1     Running            0          9h\cb1 \
+\cb3 hello-world-rest-api-correct-65c4db9f97-c9vzl   1/1     Running            0          54s\cb1 \
+\cb3 hello-world-rest-api-correct-65c4db9f97-jgvq4   1/1     Running            0          54s\cb1 \
+\cb3 kunal-first-k8s-7f759c86c4-7xccb                0/1     ImagePullBackOff   0          173m\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl delete pod hello-world-rest-api-correct-65c4db9f97-jgvq4\cb1 \
+\cb3 pod "hello-world-rest-api-correct-65c4db9f97-jgvq4" deleted\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs32\fsmilli16200 \AppleTypeServices \cf13 \cb14 gcloud container clusters resize --zone  
+\f0\fs26 \cf15 \cb2 us-central1-a kunals-first-cluster
+\f3\fs32\fsmilli16200 \cf13 \cb14  --num-nodes=0\
+\
+\
+\
+\
+\
+:::::::::::\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 EASE"\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~ \cf16 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl delete deployment hello-world-rest-api\cb1 \
+\cb3 deployment.apps "hello-world-rest-api" deleted\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~ \cf16 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl create deployment hello-world-rest-api --image=in28min/hello-world-rest-api:0.0.1.RELEASE\cb1 \
+\cb3 deployment.apps/hello-world-rest-api created\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~ \cf16 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ docker pull in28min/hello-world-rest-api:0.0.1.RELEASE\cb1 \
+\cb3 0.0.1.RELEASE: Pulling from in28min/hello-world-rest-api\cb1 \
+\cb3 e7c96db7181b: Pull complete\cb1 \
+\cb3 f910a506b6cb: Pull complete\cb1 \
+\cb3 c2274a1a0e27: Pull complete\cb1 \
+\cb3 885ff9d8f5a3: Pull complete\cb1 \
+\cb3 Digest: sha256:00469c343814aabe56ad1034427f546d43bafaaa11208a1eb0720993743f72be\cb1 \
+\cb3 Status: Downloaded newer image for in28min/hello-world-rest-api:0.0.1.RELEASE\cb1 \
+\cb3 docker.io/in28min/hello-world-rest-api:0.0.1.RELEASE\cb1 \
+\cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~ \cf16 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl delete deployment hello-world-rest-api
+\f3\fs32\fsmilli16200 \AppleTypeServices \cf13 \cb14 \
+:::::::::::\
+https://hub.docker.com/r/in28min/hello-world-rest-api/tags?page=1&ordering=last_updated\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf9 =================== DOCKERS ==========================\
+Generic \
+> docker image stop\
+> docker \
+\
+===================\
+\
+\pard\pardeftab720\partightenfactor0
+\cf17 \cb6 1. -d = detach , means even of we do control+C , application will not stop\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % docker run -p 5000:5000 
+\f4\b \cb10 -d
+\f3\b0  \cb1 in28min/todo-rest-api-h2:1.0.0.RELEASE\
+6605673ecb97a618df35361440e81df7b82be1d4e61f8924ce532c43d2418c47\
+\
+Use this container id, which is generated and then see logs\
+2. user@Users-Air GCP-WorkSpace % docker logs 6605673ecb97a618df35361440e81df7b82be1d4e61f8924ce532c43d2418c47 \
+\
+
+\fs32 3. Now going to make another container of same image\
+user@Users-Air GCP-WorkSpace % docker run -p 5001:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE\
+a2dea8cd70629f9e19595c1cd4abdeab1afe6b0907a46201caa6a8a79b5ee463\
+\
+4. Check number of containers running \
+>	docker container ls\
+
+\fs28 CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS          PORTS                    NAMES\
+a2dea8cd7062   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   6 minutes ago    Up 5 minutes    0.0.0.0:5001->5000/tcp   goofy_wing\
+6605673ecb97   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   11 minutes ago   Up 11 minutes   0.0.0.0:5000->5000/tcp   bold_montalcini\cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\fs32 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 All container related information is shown container name, image, ports, status etc\
+\
+\
+\
+5. See logs specific to container \
+Docker logs containerId \'97> docker logs a2dea8cd70629f9e19595c1cd4abdeab1afe6b0907a46201caa6a8a79b5ee463\
+\
+5.a -> To see docker logs with running tail :\
+	docker logs containerId 
+\f4\b \cb10 -f
+\f3\b0 \cb1  -> docker logs a2dea8cd70629f9e19595c1cd4abdeab1afe6b0907a46201caa6a8a79b5ee463 
+\f4\b -f
+\f3\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf5 6. See docker images\
+	> docker images\
+	
+\fs32 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % docker images\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 		REPOSITORY                 TAG             IMAGE ID       CREATED         SIZE\
+		in28min/todo-rest-api-h2   1.0.0.RELEASE   f8049a029560   19 months ago   143MB\
+\
+
+\fs28 7. -a = all , means show all \'93 With -a all containers , without -a only running containers are shown\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf18 user@Users-Air GCP-WorkSpace % docker container ls 
+\f4\b \cb10 -a
+\f3\b0 \cb1 \
+CONTAINER ID   IMAGE                                    COMMAND                  CREATED             STATUS                           PORTS                    NAMES\
+a2dea8cd7062   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   22 minutes ago      Up 22 minutes                    0.0.0.0:5001->5000/tcp   goofy_wing\
+6605673ecb97   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   27 minutes ago      Up 27 minutes                    0.0.0.0:5000->5000/tcp   bold_montalcini\
+2897fb1ab894   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   About an hour ago   Exited (130) About an hour ago                            reverent_shannon\
+98d47dd756e1   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   About an hour ago   Exited (130) About an hour ago                            competent_ritchie\cf5 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+7.1 List all containers - 
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air 01-hello-world-rest-api % 
+\f4\b \cb10 docker container ls -aq
+\f3\b0 \cb1 \
+2ceb243c3ad4\
+dad71bff08d0\
+ee7cec0a7af8\
+96cdbb80ff37
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\cf5 8. 
+\f4\b \cb10 Stop
+\f3\b0 \cb14  the containers which are running - stop command 
+\f5\i gracefully shuts down the container
+\f3\i0 \
+	> docker container stop containerId \{even first 4 char are enough\}\cf9 \
+\pard\pardeftab720\partightenfactor0
+\cf9 	
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % 
+\f4\b docker container stop
+\f3\b0  a2dea8cd7062\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+a2dea8cd7062\
+user@Users-Air GCP-WorkSpace % docker container ls -a\
+CONTAINER ID   IMAGE                                    COMMAND                  CREATED             STATUS                           PORTS                    NAMES\
+a2dea8cd7062   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   27 minutes ago      
+\f4\b Exited
+\f3\b0  (143) 10 seconds ago                               goofy_wing\
+6605673ecb97   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   32 minutes ago      Up 32 minutes                    0.0.0.0:5000->5000/tcp   bold_montalcini\
+2897fb1ab894   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   About an hour ago   
+\f4\b Exited
+\f3\b0  (130) About an hour ago                            reverent_shannon\
+98d47dd756e1   in28min/todo-rest-api-h2:1.0.0.RELEASE   "sh -c 'java $JAVA_O\'85"   About an hour ago   
+\f4\b Exited
+\f3\b0  (130) About an hour ago                            competent_ritchie\
+user@Users-Air GCP-WorkSpace % \
+\pard\pardeftab720\partightenfactor0
+
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+8.1 Stopping multiple containers by passing as an array with space\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air 01-hello-world-rest-api % docker container stop 2ceb243c3ad4 dad71bff08d0 96cdbb80ff37 ee7cec0a7af8
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \
+Important : So when we do docker container stop containerId > means take about few seconds and gracefully shout down all the processes\
+	stop =>SIGTERM => gracefulshutdown\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 9. Docker Client \'97\'97 > Docker Daemon / Docker Engine \'97> Container / Local images / Image registry \{mySql, eureka, your-app\}\
+This is a kind of client server architecture\
+	 \'97 Docker 
+\f4\b Desktop
+\f3\b0  also intalled 
+\f6\i\b docker client
+\f3\i0\b0  and 
+\f6\i\b docker deamon
+\f3\i0\b0 \
+	 - Docker Engine or Docker Daemon is 
+\f6\i\b \ul responsible
+\f3\i0\b0 \ulnone  for managing local images , containers and 
+\f6\i\b pulling or pushing local images 		to and from registry.
+\f3\i0\b0  \
+\
+\
+10. Interesting fact - Docker 
+\f4\b demon
+\f3\b0  is responsible to check if local its present or repository is present , or do we have to pull or push the images etc. Basically co-ordinator hai sale\
+	-> It can also create image and then push it to registry, so others can use it\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % docker run -p 5000:5000 in28min/todo-rest-api-h2:0.0.1-SNAPSHOT\
+Unable to find image '5000:5000' locally\
+docker: Error response f
+\f6\i\b \cb10 rom daemon
+\f3\i0\b0 \cb1 : pull access denied for 5000, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.\
+See 'docker run --help'.\
+\
+\
+11. Why is dockers important - We can install dockers on cloud , \
+	Cloud providers gives container based services : run the container and , you activate the respective service
+\fs32\fsmilli16200 \cf5 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \
+	Before dockers we had virtual machines , and they were heavily weight\
+	11.1 Docker will manage containers , and make an image which is complete running machine or a service\cf9 \
+\
+\
+<!\'97\'97\'97\'97 IMAGE Related Commands\'97\'97>\
+\cf5 12. \
+	12.1 Making a docker tag \'97> docker tag fromTag toTag\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % docker tag in28min/todo-rest-api-h2:0.0.1-SNAPSHOT in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-Latestv1\
+user@Users-Air GCP-WorkSpace % \
+\pard\pardeftab720\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 	12.2 Giving different tag to same image : below same image Id\'92s is shown with different tags , its manual only\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air GCP-WorkSpace % docker images\
+REPOSITORY                 TAG                       IMAGE ID       CREATED         SIZE\
+in28min/todo-rest-api-h2   1.0.0.RELEASE             f8049a029560   19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT            
+\f4\b \cb19 40ee0c4765e0
+\f3\b0 \cb1    19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latest     
+\f4\b 40ee0c4765e0
+\f3\b0    19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latestv1   
+\f4\b 40ee0c4765e0
+\f3\b0    19 months ago   143MB\
+user@Users-Air GCP-WorkSpace % 
+\fs32\fsmilli16200 \cf5 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 	\
+\
+13. Pull - simply download or pull image from registry\
+> docker 
+\f4\b \cb10 pull
+\f3\b0 \cb14  imageName\
+\
+14. Run - docker run , pull and runs i.e download and run\
+\
+15. \cb10 Search\cb14  - simply search repository/registry, its a like search\
+	> docker search imageName\
+\
+16. 
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 OFFICIAL -[OK] - Official Image \'97> Official Images are created / organised/optimized/ Maintained by docker teams \
+Make sure we are using an official image 
+\fs32\fsmilli16200 \cf5 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+17. \cb10 History\cb14  - 
+\f4\b docker image history imageName
+\f3\b0  => It gives the last events taken up by that image , just like unix history\
+\
+18. \cb10 Inspect\cb14  - 
+\f4\b docker image inspect/ docker container inspect
+\f3\b0  , just to inspect the image . E.g tags ,Id\'92s , container informations, comments, when it was\
+	created , jar infomrations,exposed ports , environment variables, java version path etc. \
+	Basically doing an inspection of the docker image. All is shown in JSON format\
+		Note : We can only inspect or check history of official OK marked image ?? May be \
+\
+19. \cb10 remove -\cb6  > It will remove the image from local repository\
+		> docker images // check images locally\
+		>
+\f4\b docker image remove imageID
+\f3\b0 \
+20. Docker \cb10 info\cb6  -> information related to docker, how many images , hoe many running , versions\
+							where is docker path etc \
+21. Issue - Unable to remove the image with multiple instances \
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	user@Users-Air / % docker images\
+	REPOSITORY                 TAG                       IMAGE ID       CREATED         SIZE\
+	in28min/todo-rest-api-h2   1.0.0.RELEASE             f8049a029560   19 months ago   143MB\
+	in28min/todo-rest-api-h2   0.0.1-SNAPSHOT            40ee0c4765e0   19 months ago   143MB\
+	in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latest     40ee0c4765e0   19 months ago   143MB\
+	in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latestv1   40ee0c4765e0   19 months ago   143MB\
+	user@Users-Air / % docker image remove 40ee0c4765e0\
+	Error response from daemon: conflict: unable to delete 40ee0c4765e0 (must be forced) - image is referenced in multiple repositories\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b \cb10 	Solution - force modifier -f : We cannot delete the image running or associated to multiple tags/instanced without the force modifier
+\f3\i0\b0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 22. docker image remove -f imageId\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b \cf5 	Get the images
+\f3\i0\b0  \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb20 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % docker images\
+REPOSITORY                 TAG                       IMAGE ID       CREATED         SIZE\
+in28min/todo-rest-api-h2   1.0.0.RELEASE             f8049a029560   19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT            40ee0c4765e0   19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latest     40ee0c4765e0   19 months ago   143MB\
+in28min/todo-rest-api-h2   0.0.1-SNAPSHOT-Latestv1   40ee0c4765e0   19 months ago   143MB\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 	Remove the images with force identifier , all the insane associated to same ID will be removed or deleted
+\f3\i0\b0\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cb21 user@Users-Air / % docker image remove -f 40ee0c4765e0\
+Untagged: in28min/todo-rest-api-h2:0.0.1-SNAPSHOT\
+Untagged: in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-Latest\
+Untagged: in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-Latestv1\
+Untagged: in28min/todo-rest-api-h2@sha256:a2126159dc6599bced7ecb08c98389a2980433f7943efdc94d2f8d4e5ede5735\
+Deleted: sha256:40ee0c4765e04224680673f864870f5c605335563f9669e505bd7e92aefdb20a\
+user@Users-Air / % \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+23 Basically a container is launched\
+\
+ docker run is a shortcut of a command > docker container run\
+		> docker run -p 5000:5000 -d imageName\
+		> docker container run -p 5000:5000 -d imageName\
+24 \cb10 pause / unpause\cb6  
+\f4\b container and of course not image
+\f3\b0  [All the processes inside the container will be paused]\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs30 \cf5 		>\cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % 
+\f6\i\b docker pause container 6605673ecb97
+\f3\i0\b0 \
+		> docker info : Also shows paused containers \'93Paused: 1\'94\
+		> docker container ls -a : \'93 Up 10 hours (Paused) \'93
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+	24.1 Now we can check if the container is paused bu looking logs \
+		> docker logs -f containerId\
+		Secondly an application will also not work\
+
+\fs32 	\cb10 unpause\cb6  \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 		user@Users-Air / % 
+\f6\i\b docker container unpause 6605673ecb97
+\f3\i0\b0 \
+		Error response from daemon: Container 6605673ecb97a618df35361440e81df7b82be1d4e61f8924ce532c43d2418c47 is not pause
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 25\
+26 Just like image we can also inspect containers\
+	> docker container inspect containerId\
+\
+27 docker images [no ls is needed in case of images]\
+	docker container ls -a\
+28 
+\f4\b \cb10 \ul prune
+\f3\b0 \cb6 \ulnone   - This will remove all the stopped / exited containers, which can be checked using command \'93> docker container ls -a\'94\
+	
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % 
+\f4\b \cb22 docker container prune
+\f3\b0 \cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b 	WARNING! This will remove all stopped containers.
+\f3\i0\b0 \
+	Are you sure you want to continue? [y/N] y    \
+	Deleted Containers:\
+	bb608a1fb089161e3fde5b83a72042a751006c2216708390f6d1b296d7ae370c\
+	a2dea8cd70629f9e19595c1cd4abdeab1afe6b0907a46201caa6a8a79b5ee463\
+	2897fb1ab89435e307c70c0452778b362cc7aeebbfa34cb64f3c6be3007dd427\
+	98d47dd756e198565fd2dbe1845658320912ba93b17ee602a38c1c95c018d81a\
+	Total reclaimed space: 0B\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 29 docker container 
+\f4\b \cb10 kill
+\f3\b0 \cb6  containerId\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	user@Users-Air / % docker container kill 283fc0a528e9 \
+	283fc0a528e9
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+30 Note you must always \'93docker container stop\'94 instead of kill, so you always have a graceful shut down\
+	\
+31.
+\f4\b \cb10 \'97-restart= always / no
+\f3\b0 \cb6  ==> this is called \'93restart policy\'94 - > 
+\f6\i\b default is no
+\f3\i0\b0 \
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	user@Users-Air ~ % docker run -p 5000:5000 -d --restart=always in28min/todo-rest-api-h2:0.0.1-SNAPSHOT\
+	96cdbb80ff377fb8257f5aeeb9971b564247ed15e8e0bb09c149ae5d0e90782f\
+\
+	What happens - whenever we start the docker demon i.e docker desktop then the docker see the containers with restart policy as restart =always , and finally it launches it and hence 	even the exited containers marked as \'97restart=always are launched , \'93 Hindi - jo stoped ya exited phi hote rain na , vo bhi launch ho jate hain if the policy is restart  \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b \ul 	Example of restart
+\f3\i0\b0 \ulnone \
+	user@Users-Air / % docker container ls -a\
+	CONTAINER ID   IMAGE                                          COMMAND                  CREATED              STATUS                        PORTS                    NAMES\
+	\cb10 ee7cec0a7af8   in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-test   "sh -c 'java $JAVA_O\'85"   About a minute ago   \cf23 Exited (143) 16 seconds ago \cf18                            elastic_maxwell\cb1 \
+	aa720c142b1a   in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-test   "sh -c 'java $JAVA_O\'85"   3 minutes ago        Exited (143) 2 minutes ago                             musing_chandrasekhar\
+	96cdbb80ff37   in28min/todo-rest-api-h2:0.0.1-SNAPSHOT        "sh -c 'java $JAVA_O\'85"   21 minutes ago       Up 7 minutes                  0.0.0.0:5000->5000/tcp   elegant_lalande\
+	user@Users-Air / % docker container ls \
+	CONTAINER ID   IMAGE                                          COMMAND                  CREATED          STATUS          PORTS                    NAMES\
+	\cb10 ee7cec0a7af8   in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-test   "sh -c 'java $JAVA_O\'85"   4 minutes ago   \cf24  \cf25 \cb26 Up 11 seconds \cf18 \cb10   0.0.0.0:5001->5000/tcp   elastic_maxwell\cb1 \
+	96cdbb80ff37   in28min/todo-rest-api-h2:0.0.1-SNAPSHOT        "sh -c 'java $JAVA_O\'85"   24 minutes ago   Up 11 seconds   0.0.0.0:5000->5000/tcp   elegant_lalande\
+	user@Users-Air / % \
+\
+When do we need to keep restart policy restart ?\
+	For example in case of DB\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 32. 
+\f4\b \cb10 \ul Events
+\f3\b0 \cb6 \ulnone  - just to see what all events are happening \
+ > \'93docker events\'94 Just like \'93kubectl get events \'93\
+	\
+33. 
+\f4\b \cb10 \ul top
+\f3\b0 \cb6 \ulnone  - see what is happening at the top of the container, which process is run-ing on the top\
+	>docker top containerId\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air ~ % docker top dad71bff08d0\
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD\
+root                1834                1808                15                  04:12               ?                   00:00:20            
+\f4\b java -Djava.security.egd=file:/dev/./urandom 
+\f3\b0 -jar /app.jar
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+34.stats - gets the 
+\f4\b \ul status of the container
+\f3\b0 \ulnone  in the docker\
+	> docker stats\
+	
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 CONTAINER ID   NAME                CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O     PIDS\
+		dad71bff08d0   elastic_mendeleev   0.35%     334.2MiB / 1.944GiB   16.79%    936B / 0B     25.9MB / 0B   30\
+		ee7cec0a7af8   elastic_maxwell     0.21%     326.2MiB / 1.944GiB   16.39%    1.28kB / 0B   15.8MB / 0B   30\
+		96cdbb80ff37   elegant_lalande     0.19%     328.5MiB / 1.944GiB   16.50%    1.37kB / 0B   49MB / 0B     30\
+		user@Users-Air ~ % 
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+35. Allocating cpu-quota and maximum amount of memory a container processes can use -m 512, \'97cpu-quota=1000\
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air ~ % docker container run -p 5003:5000 -m 512m -d --cpu-quota=1000 in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-test\
+6504fcde0ecf21e069fc2e8966004c77994387ca08e9382d6f41768b55c3b496\
+docker: Error response from daemon: driver failed programming external connectivity on endpoint pensive_williams (0deaa3d51587aa112995b0d2a9a86d82f3cc78686b92b848d743ff87bfdf30cb): Bind for 0.0.0.0:5003 failed: port is already allocated.\
+user@Users-Air ~ % docker container run -p 5004:5000 \cb27 -m 512m -d --cpu-quota=1000\cb1  in28min/todo-rest-api-h2:0.0.1-SNAPSHOT-test\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cb27 2ceb24\cb1 3c3ad4ca7f68619ca873bd5f572b749662591dfbeeafc59cadb625bf2b\
+user@Users-Air ~ % \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 So docker stats will show\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O     PIDS\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cb27 2ceb243c3ad4\cb1    optimistic_bardeen   1.00%     \cb27 21.21MiB / 512MiB \cb1     4.14%     866B / 0B       15.1MB / 0B   10\
+dad71bff08d0   elastic_mendeleev    0.15%     324.6MiB / 1.944GiB   16.31%    1.05kB / 0B     26.8MB / 0B   30\
+ee7cec0a7af8   elastic_maxwell      0.10%     319.3MiB / 1.944GiB   16.04%    1.39kB / 0B     16.2MB / 0B   30\
+96cdbb80ff37   elegant_lalande      0.16%     321.6MiB / 1.944GiB   16.16%    1.81kB / 308B   49.8MB / 0B   30
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+36. df - what all docker demon is managing e.g image ,container,localvolumens\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air ~ % 
+\f4\b \cb10 docker system df\
+
+\f3\b0 \cb1 TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE\
+Images          2         1         181.1MB   143MB (78%)\
+Containers      5         4         0B        0B\
+Local Volumes   12        5         163.8kB   32.77kB (20%)\
+Build Cache     0         0         0B        0B\
+user@Users-Air ~ % 
+\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+37. Our docker file has following entries\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 	FROM \ul openjdk\ulnone :8-\ul jdk\ulnone -alpine\
+	VOLUME /\ul tmp\ulnone \
+	EXPOSE 8080\
+	ADD target/*.jar app.jar \'97 > our jar file is in the target folder , we will copy our jar to the docker image \
+	ENTRYPOINT [ "\ul sh\ulnone ", "-c", "java -jar /app.jar" ]\
+
+\f3\fs32\fsmilli16200 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 38. THree most important entries in the pom.xml\
+		a. artifactId - dockerFile-maven-plugin\
+		b. Docker\'92s repository \
+		c. Docker\'92s tag\
+\
+			<configuration>\
+				<repository>Docker Hub registory/repository\'92s in registory</repository>\
+				<tag>tag-release-version</tag>\
+\
+			\
+39. To create a docker image :\
+	dockerFile must be present\
+	pom.xml -> docker plug-in entry must be present\
+	for making .jar -> just go to the project folder in terminal and do men clean install\
+	for making.war as a deployable unit \'97> just right click on the eclipse and run-as=>maven build => clean package\
+ \
+	\
+40.\
+41. \
+42.\
+43.\
+44.\
+45.\
+46.\
+47.\
+48.\
+50.\
+51.\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf9 \cb14 \
+\pard\pardeftab720\partightenfactor0
+\cf9 =================== DOCKERS ==========================\
+Create a spring boot image to be pushed to repository\
+\
+> step 1 - go to project directory\
+> man clean install\
+> image will be created and will be placed in the local docker repository\
+\
+=================== Kubernetes ==========================\
+\
+1. To to terminal and cd to the home dir of project\
+> man clean install\
+Will also create docker image because of plug in we have added\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f6\i\b\fs22 \cf2 \cb23 \kerning1\expnd0\expndtw0 \ul \ulc2 \CocoaLigature0 Kunal here the docker image is created\
+All these steps to be taken are defined in the dockerFile 
+\f3\i0\b0\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\ulnone \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb10 \kerning1\expnd0\expndtw0 \CocoaLigature0 [
+\f4\b \cf28 INFO
+\f3\b0 \cf18 ] \cf2 \cb23 Image will be built as in28min/hello-world-rest-api:0.0.4-SNAPSHOT\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 [
+\f4\b \cf28 INFO
+\f3\b0 \cf18 ]\cf25 \cb23  Successfully tagged in28min/hello-world-rest-api:0.0.4-SNAPSHOT - Kunal here the image is tagged\cf18 \cb1 \
+[
+\f4\b \cf28 INFO
+\f3\b0 \cf18 ] \
+[
+\f4\b \cf28 INFO
+\f3\b0 \cf18 ] Detected build of image with id 7242d676d4fd\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb23 Kunal here the final jar is ready- Jar is to be picked up from target folder\cf18 \cb1 \
+\cf2 \cb23 [
+\f4\b INFO
+\f3\b0 ] Building jar: /Users/user/Desktop/KUNALRAIGCP/GCP-WorkSpace/kubernetes-crash-course/01-hello-world-rest-api/target/hello-world-rest-api-docker-info.jar\
+[
+\f4\b INFO
+\f3\b0 ] Successfully built in28min/hello-world-rest-api:0.0.4-SNAPSHOT\cf18 \cb1 \
+[
+\f4\b \cf28 INFO
+\f3\b0 \cf18 ] 
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \
+Above docker image is created , and the .jar file to be put in an image is picked from the target folder as shown below\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf2 \cb23 \kerning1\expnd0\expndtw0 \CocoaLigature0 [
+\f4\b INFO
+\f3\b0 ] Building jar: /Users/user/Desktop/KUNALRAIGCP/GCP-WorkSpace/kubernetes-crash-course/01-hello-world-rest-api/target/hello-world-rest-api-docker-info.jar
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf9 \
+2. Docker file - this file contains the set of instructions to make an image \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 	FROM \ul openjdk\ulnone :8-\ul jdk\ulnone -alpine\
+	VOLUME /\ul tmp\ulnone \
+	EXPOSE 8080\
+	ADD target/*.jar app.jar \'97 > our jar file is in the target folder , we will copy our jar to the docker image \
+	ENTRYPOINT [ "\ul sh\ulnone ", "-c", "java -jar /app.jar" ]\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\
+3. Now we will push the image to docker hub.\
+	Step1 - make a docker hub account\
+	Step2 - login\
+		
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % docker login\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+			Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.\
+			Username: kunalrai1005\
+			Password: P@ssw0rd1\
+			Login Succeeded\
+			user@Users-Air / % \
+\
+Important - to make your own mage\
+	a) change the name in the pom.xml. \'97\'97\'97> make sure there is nothing in the capital letter, error will be shown\
+					
+\f0\fs24 \cf29 \CocoaLigature1 <\cf30 configuration\cf29 >\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 					\cf29 <\cf30 repository\cf29 >\cf0 kunalimage/$\{project.name\}\cf29 </\cf30 repository\cf29 >\cf0 \
+					\cf29 <\cf30 tag\cf29 >\cf0 $\{project.version\}\cf29 </\cf30 tag\cf29 >\cf0 \
+					\cf29 <\cf30 skipDockerInfo\cf29 >\cf0 true\cf29 </\cf30 skipDockerInfo\cf29 >\cf0 \
+				\cf29 </\cf30 configuration\cf29 >
+\f3\fs22 \cf18 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+	b) man clean install to make image and then login\
+	c) docker login\
+	d) push the local image to docker repository\
+		
+\f7\fs28 \cf2 \cb31 \expnd0\expndtw0\kerning0
+\CocoaLigature1 docker tag local-image:tagname new-repo:tagname\
+\pard\pardeftab720\partightenfactor0
+\cf2 	  docker push new-repo:tagname
+\f3\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs32\fsmilli16200 \cf9 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 		\
+=================== Kubernetes ==========================\cf13 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs28 \cf2 \cb31 docker push kunalrai1005/kunalrai1005:tagname
+\f3\fs32\fsmilli16200 \cf13 \cb14 \
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf9 =================== GCLOUD AND KUBECTL ==========================\
+\
+If we don\'92t want to make changes using could shell , we need to install 2 tools \
+a. GCLOUD\
+B. KubeCLT\cf13 \
+\
+\
+2. \'97record=True , it record the command which caused change. \
+\
+3. \'97rollout = to check the rollout status \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+user@Users-Air / % kubectl rollout history deployment my-kunal-another-service\
+deployment.apps/my-kunal-another-service \
+REVISION  CHANGE-CAUSE\
+1         <none>\
+\
+user@Users-Air / % kubectl rollout status delpoyment my-kunal-another-service\
+error: the server doesn't have a resource type "delpoyment"\
+user@Users-Air / % kubectl rollout status deployment my-kunal-another-service\
+deployment "my-kunal-another-service" successfully rolled out\
+user@Users-Air / % kubectl rollout status deployment kunalrai1005-hello-world \
+deployment "kunalrai1005-hello-world" successfully rolled out\
+user@Users-Air / % 
+\fs32\fsmilli16200 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf13 4. Undo rollout\
+Kubectl rollout undo deployment deployment name  \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 error: the server doesn't have a resource type "deloyment"\
+user@Users-Air / % kubectl rollout undo deloyment my-kunal-another-service                \
+error: the server doesn't have a resource type "deloyment"\
+user@Users-Air / % kubectl rollout undo deployment my-kunal-another-service --to-revision=3\
+error: unable to find specified revision 3 in history\
+user@Users-Air / % kubectl rollout undo deployment my-kunal-another-service                \
+error: no rollout history found for deployment "my-kunal-another-service"\
+user@Users-Air / % \
+\pard\pardeftab720\partightenfactor0
+
+\fs32\fsmilli16200 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+// If we create a new deployment and check the rollout status\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % kubectl rollout status deployment kunalrai1005-hello-world\
+deployment "kunalrai1005-hello-world" successfully rolled out\
+user@Users-Air / % kubectl create deployment check-this-deployment --image=kunalrai1005/kunalrai1005/hello-world-rest-api:0.0.4-SNAPSHOT\
+deployment.apps/check-this-deployment created\
+user@Users-Air / % kubectl rollout status deployment check-this-deployment                                                              \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f4\b \
+We can also undo the rollout of the deployment \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\b0 	user@Users-Air / % kubectl rollout undo deployment check-this-deployment\
+	error: no rollout history found for deployment "check-this-deployment"\
+	user@Users-Air / % 
+\fs32\fsmilli16200 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf13 \
+5. K8s logs  - Kubernetes logs for wach pod\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	user@Users-Air / % kubectl logs kunalrai1005-hello-world-79cc4974f7-42m66
+\fs32\fsmilli16200 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+6. Watch command on the cloud shell , continuous execution of url are shown on the logs\
+	
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ watch curl {\field{\*\fldinst{HYPERLINK "http://35.223.201.103:8080/hello-world"}}{\fldrslt http://35.223.201.103:8080/hello-world}}\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 \cb6 6.1 . Sending request every 0.1 second  watch is to watch the client url , curl , so send the request from server to any protocol every 0.1 seconds\
+	
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 watch -n 0.1 curl ipaddress:port/hello-world\
+	
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ watch -n 0.1 curl 104.197.78.220:8080/hello-world\cb1 \
+\cf5 \cb6 \
+\
+============================================================================================================================\
+									YAML\
+============================================================================================================================\
+\
+\
+1. Kubernetes use YAML format for defining services , deployments almost everything.\
+2. Command to see the entire deployment details : It returns yaml\
+	
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % kubectl get deployment -o yaml\
+	It shows all the basic information :\
+		a. Rolling strategy\
+		b. Versions, replicas, specs, status, images , container informations . Almost everything\
+		c. kind= deployment\
+3. Lets take it to a local file using \'93> fileName\'94\
+4. Get service information as :\
+	kubectl get serviceName -o yaml\
+		user@Users-Air / % kubectl get service kunalrai1005-hello-world -o yaml\
+	It will also show all the information of the services\
+		a. kind: service\
+		b. All information nodes, ports, name,ipaddress etc\
+	copy \'93 > fileName\'94\
+		user@Users-Air / % kubectl get service kunalrai1005-hello-world -o yaml > service.yaml\
+		zsh: read-only file system: service.yaml\
+		user@Users-Air / % kubectl get service kunalrai1005-hello-world -o yaml > service.yaml\
+		zsh: read-only file system: service.yaml\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f4\b \ul 		// actually copying here
+\f3\b0 \ulnone 	\
+		user@Users-Air / % kubectl get service kunalrai1005-hello-world -o yaml > /Users/user/Desktop/KUNALRAIGCP/GCP-WorkSpace/kubernetes-crash-course/01-hello-world-rest-api/service.yaml\
+		user@Users-Air / %  kubectl get deployment -o yaml > /Users/user/Desktop/KUNALRAIGCP/GCP-WorkSpace/kubernetes-crash-course/01-hello-world-rest-api/deployment.yaml\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+5. 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 \ul apply - 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  \cb6 important command Kunal , make changes in yaml and apply\
+\
+	
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % 
+\f4\b \cb10 kubectl apply -f /Users/user/Desktop/KUNALRAIGCP/GCP-WorkSpace/kubernetes-crash-course/01-hello-world-rest-api/deployment.yaml
+\f3\b0 \cb1 \
+	Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply\
+	deployment.apps/kunalrai1005-hello-world configured\
+	Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply\
+	
+\f4\b deployment.apps/my-kunal-another-service configured
+\f3\b0 \
+	user@Users-Air / % \
+		> kubectl get pods , now will be 3\
+		> kubectl get replicates or rs\
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf32 Kunal Interestinly - instead of firing the commands always , we can actually modify the YAML
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \
+In YAML file we can define multiple kubernetes resources\
+We can combine service.yaml into a deployment.yaml, simply by copy and paste\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0           \cf33 imagePullPolicy\cf0 : \cf34 IfNotPresent - in deployment.yaml if you always want to pull the image or you want to check in local and then decide.\
+	restartPolicy : always , from cli we give \'97restart=always\
+	\cf0   \cf33 status\cf0 : actually this is dynamic, as it keeps changing so , if ok to not have in the declaration\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \cb35 ===============SHORTCUT COMMANDS====================\cf5 \cb6 \
+6. 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 kubectl delete all app=appName
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cb6 - delete all command\
+\cf9 		
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 Sequence of deletion    PODS\'97>SERVICES\'97>DEPLOYMENT.APP\'97>REPLICAS.APP
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \
+	
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air / % 
+\f4\b kubectl delete all -l app=kunalrai1005-hello-world
+\f3\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 		kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~ \cf16 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ kubectl delete all -l app=kunal1005-deployment-node\cb1 \
+\cb3 		pod "kunal1005-deployment-node-6648dcd754-wpgdf" deleted\cb1 \
+\cb3 		service "kunal1005-deployment-node" deleted\cb1 \
+\cb3 		deployment.apps "kunal1005-deployment-node" deleted\cb1 \
+\cb3 		replicaset.apps "kunal1005-deployment-node-6648dcd754" deleted
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+7. 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 Kubectl get all\
+
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cb6 		\cf9 		
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 Sequence of representation :    PODS\'97>SERVICES\'97>DEPLOYMENT.APP\'97>REPLICAS.APP
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \
+\
+		
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 NAME                                            READY   STATUS    RESTARTS   AGE\
+		pod/my-kunal-another-service-78bd9f5d9b-5fpw6   1/1     Running   0          14h\
+\
+		NAME                               TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE\
+		service/kubernetes                 ClusterIP      10.44.0.1    <none>         443/TCP          16h\
+		service/my-kunal-another-service   LoadBalancer   10.44.2.69   35.193.58.97   8090:32101/TCP   14h\
+\
+		NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE\
+		deployment.apps/my-kunal-another-service   1/1     1            1           14h\
+\
+		NAME                                                  DESIRED   CURRENT   READY   AGE\
+		replicaset.apps/my-kunal-another-service-78bd9f5d9b   1         1         1       14h\
+\
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+8. 
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air 01-hello-world-rest-api % kubectl 
+\f4\b \cb23 \ul apply
+\f3\b0 \cb1 \ulnone  -f deployment.yaml\
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 			\cf9 		
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 Sequence of representation :    PODS\'97>SERVICES\'97>DEPLOYMENT.APP\'97>REPLICAS.APP
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+		<!\'97 Below is a real example kunal>\
+		user@Users-Air 01-hello-world-rest-api % kubectl apply -f deployment-kunal.yaml\
+		deployment.apps/test-node created\
+		Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply\
+		service/kubernetes configured\
+		service/test-node created\
+		user@Users-Air 01-hello-world-rest-api % \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 9. 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 \ul Curl command \'97 > C-URL (Client - URL) : 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  Transfer data from server using various protocols http,SFTP.\cb6 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	user@Users-Air 01-hello-world-rest-api % curl 104.197.78.220:8080/hello-world\
+	Hello World Written by Kunal V3 5lqk7
+\f4\b \cf25 \cb18 %
+\f3\b0 \cf18 \cb1                                                                                                                                              	user@Users-Air 01-hello-world-rest-api % \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+\
+Important parts of YAML\
+1. API version\
+2. Kind \
+3. Metadata \'97> label, name,namespace\
+4. Specs\
+\
+5. PODS\
+Important definition is = definition of the pod\
+	a. In 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \ul template
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  of a deployment section I.e pods , we have an array of containers shown by sign \'93-\'93\
+	b. Now each image i.e static stream has a dynamic running version called container, and the pulling policy is hence defined here\
+	c. How do you match the pod with the deployment - Using labels\
+	<!\'97This is for deployment\'97>\
+	
+\f0\fs24 \AppleTypeServices \cf33 \cb1 \kerning1\expnd0\expndtw0 matchLabels\cf0 :\
+\pard\pardeftab720\partightenfactor0
+\cf0 	        \cf33 app\cf0 : \cf34 kunalrai1005-hello-world
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+	\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 	<!\'97This is for pod\'97>\
+		
+\f0\fs24 \AppleTypeServices \cf33 \cb1 \kerning1\expnd0\expndtw0 labels\cf0 :\
+\pard\pardeftab720\partightenfactor0
+\cf0 	          \cf33 app\cf0 : \cf34 kunalrai1005-hello-world\
+\
+	Deployment  label is matched with the pod label\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 	
+\f0\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 - \cf33 image\cf0 : \cf34 kunalrai1005/hello-world-rest-api:0.0.4-SNAPSHOT\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0           
+\f8\b \cf33 imagePullPolicy\cf0 : \cf34 \ul \ulc34 IfNotPresent / Always
+\f0\b0 \cf0 \ulnone \
+          \cf33 name\cf0 : \cf34 hello-world-rest-api\
+\pard\pardeftab720\partightenfactor0
+\cf33 	restartPolicy\cf0 : 
+\f8\b \cf34 \ul Always :, 
+\f0\b0 \ulnone always restart when the desk starts, even the stopped containers which are exited get started once the dockers desktop is started\
+	\cf33 terminationGracePeriodSeconds\cf0 : \cf36 30 :\cf34 terminationgaceperiod - when the shutdown happens then for graceful shopping, cleaning up resource this is set . Say if 30 scones ,
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 \
+6. SERVICES	: PODS are tied to DEPLOYMENT and SERVICES are tide to the PODS\
+	sessionAffinity:None - In we applications , if we have a sessions for different users , then we  want a same user request to be associated to same pod.\
+							  None means no session affinity at all\
+	sessionAffinity:ClientIp - All the request from the same ip would go to the same pods. Now we have associated the session with a particular pods\
+	ports - on what port you want to expose your service\
+	selector - how do you match a service to a POD\
+
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	selector:\
+    	  app: kunal1005-deployment-node \'97 > Take all pods which have this label
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+	\cf2 \cb23 LABELS   - > POD <\'97> Deployment\
+	SELECTOR - > SERVICE <-> POD\
+	\cf5 \cb6 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f9\b\fs30 \AppleTypeServices \cf37 \cb14 \'a07. Diff command = -\cb38 diff -f\
+\cb14  
+\f3\b0\fs22 \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 user@Users-Air 01-hello-world-rest-api % 
+\f4\b kubectl diff -f deployment.yamal
+\f9\fs30 \cf37 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \'a0
+\f1\b0\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf5 \
+8. Some of the highlights are \
+	a. Labels\
+	b. Templates for pods\
+	c. Rolling strategies\
+	d. Session affinity - pods are associated to specific users\
+	e. Selecter service is matched to a pod - label selector : app : name\
+\
+\
+\
+8. Sending request every 0.1 second  watch is to watch the client url , curl , so send the request from server to any protocol every 0.1 seconds\
+	
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cb10 watch -n 0.1 curl ipaddress:port/hello-world\
+	
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 kunalraigcp@cloudshell:
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \cf4 ~
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 $ watch -n 0.1 curl 104.197.78.220:8080/hello-world\cb1 \
+\cf5 \cb6 \
+\
+\
+9. 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \ul \ulc5 minReadySeconds : give 45 seconds for pods to start up , after 45 seconds only we can hit the url . Or do curl
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone \
+	In deployment document deployment.yaml\
+		we have specs , define a new parameter minReadySeconds:45\
+\
+10. Get a replicase\'92s yaml :\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs22 \AppleTypeServices \cf18 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	
+\f4\b \cb10 user@Users-Air 01-hello-world-rest-api % kubectl get replicaset -o yaml>replicaset-kunal.yaml\
+\cb6 	Replicaste has following informations \
+
+\f3\b0 	a. Kind\
+	b. Template I.e pods \
+	c. Labels \
+	d. Sectors to match labels
+\f1\fs26 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+Note :\
+1. Replicaset does not know anything about strategy , it only knows about how many nodes are running.\
+2. Imp - to create a service , we does not necessarily need a deployment , we just need a pod. Automatically service is formed\
+3. We can make any thing i.e any resource create , up and running\
+4. Replicaset does not worry about versions, as long as my pods are working fine. A replica set will only come in action once the pod is deleted5. \
+5. deployment are tied to PODS using \
+	matchLabels :\
+		app : hello-world-rest-api\
+  \
+6. SERVICES are tied to PODS\
+7. One Service with 2 deployments can also be done. Why this is possible is because the service is tied to the POD\
+8. Clusters -> Nodes\
+						-> deployment I.e workload\
+							-> service -are tied to pods\
+\
+\
+\
+\
+\
+=========== \
+Docker Compose\
+==========\
+\
+\
+1. YAML file containing SNV\{Services /Networks/ Volumes\} for setting up a docker application.\
+2. Docker Swarm - replacement of kubernetes , host containers to multiple hosts\
+3. Namespace - private workspace per container, docker create a separate namespace for each container to provide a level of isolation\
+4. Lifecycle of a docker container\
+5. Docker ps = process status , docker ps -a means all containers process status\
+	It will show you all the running containers\
+6 docker info > tells number of containers running , paused and stopped \{docker\'92s information basically\}\
+7 docker anyCommand 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 describe\
+
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 8. Docker 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 run
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  and docker container 
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 start
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  containerID are same\
+9. Docker rm container id\
+10. Docker rmi image id		<<<<<< Not I is extra rm
+\f2\b \AppleTypeServices\AppleTypeServicesF65539 \ul i
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  \
+11 docker system prune > remove all stooped containers, cache, dangling images\
+12. Docker where is it used ?\
+	a. Configuration is done in seconds and quickly\
+	b. Code pipeline management - easy to move and deploy to different environments \
+	c. Development productivity\
+	d. Application Isolations - we can work on any hardware\
+	c. Rapid deployment\
+	d. Easy to deploy on cloud platform\
+	e. We can use JSON and YAML also for docker compose\
+\
+13. There can be 6 states a container holds at any given point of time : Created , Running , Pushed , Restarted , Exited , dead\
+14. Container has to be in stopped state before it has to be removed , even Paused container cannot be removed.\
+15. By default re-start flag is set to false\
+16 . Every container need storage space CPU and memory. Container / host there is no restrictions\
+17. Docker compose - Docker compose always runs in the dependency order \
+	These dependencies are specifications like > depends on , links , volumes from etc\
+\{\
+File : docker - compose \
+	running a complete application containing multiple services can be yaml or json\
+	Application\{ has 5 containers\}\
+	Yaml file - all services and containers information is given in one file , and this one file can be used to run all containers together and\
+	bring up the entire application\
+\
+\}\
+\
+18. Docker file - make an image\
+	Docker compose - runs the multi container application\'92s services\
+19 . Docker events\{activities in docker deamon\} and stats \{cpu\} - monitor docker in production\
+		- binding different port\
+		- restart policy\
+		-}

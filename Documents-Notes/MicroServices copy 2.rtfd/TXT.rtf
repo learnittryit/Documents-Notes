@@ -1,0 +1,370 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\fnil\fcharset0 LucidaGrande-Bold;\f2\fswiss\fcharset0 Arial-BoldItalicMT;
+}
+{\colortbl;\red255\green255\blue255;\red13\green16\blue23;\red0\green0\blue255;\red207\green187\blue254;
+\red236\green186\blue254;\red236\green186\blue254;\red0\green0\blue0;\red255\green255\blue10;}
+{\*\expandedcolortbl;;\cssrgb\c5490\c7843\c11765;\cssrgb\c1680\c19835\c100000;\cssrgb\c84913\c79069\c99741;
+\cssrgb\c94438\c78969\c99727;\cssrgb\c94438\c78969\c99727;\cssrgb\c0\c0\c0;\cssrgb\c99942\c98555\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid3\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid4\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid5\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li3600\lin3600 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid6\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li4320\lin4320 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15180\viewkind0
+\deftab720
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\b\fs28 \cf2 		\expnd0\expndtw0\kerning0
+Microservices Understanding\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+ATOMIC transaction - entire transaction fails or pass\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+Saga type of transactions - Transactions are asynchronous and reactive\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+1. Local transaction \'97\'97> Transaction per micro services\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+2. Saga \'97> Saga is an architectural pattern\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Provides an elegant approach \'93to implement \'93 transactions , that spans multiple micro\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}services . The transactions are asynchronous and reactive.\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}Each Microservice : \
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}performs a local transaction\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}publish an event\
+\pard\tx1660\tx2160\tx2267\tx2834\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Each Successor micro service :\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Listens to an event \
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}perform local transaction\
+\pard\tx1660\tx2160\tx2267\tx2834\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Compensation Transactions:\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}In case of failure , Saga patterns also has a compensation methods to do cleanup and rollbacks\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl4\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+3. Microservice - Core feature : ( Distributed / Single responsibility principal / must have its own bounded context )\
+\pard\tx3820\tx4320\pardeftab720\li4320\fi-4320\partightenfactor0
+\ls1\ilvl5\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Distributed transactions are either executed \ul sequentially or paralleley \ulnone > in order to complete the transaction\
+   4.  Database - Most common pattern is data base per micro service\
+   5. Problem statements:\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}a. How to achieve atomicity - Either all success or all fail - if one local transaction fail, need to rollback previous committed transactions in other micro services\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}b. Isolation level of concurrent requests - If same DB resource is accessed by multiple micro service. Basically problem of read before write\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl2\kerning1\expnd0\expndtw0   \expnd0\expndtw0\kerning0
+  6. 	2 Approaches \
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+a. 2PC - 2 - Phase commit\
+\ls1\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+b. SAGA \
+\ls1\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+   7. 2-PC - 2 Nodes:\
+\pard\tx220\tx720\tx1133\tx1700\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 		                 			\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\{\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}Controlling Node - Act as a Global Transaction Manager - > Which is a micro service \'93Transaction-Server\'94. Which will publish an event on Rabbit MQ\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}Working Node - Actual Services performing local transactions , and are suppose to:\
+\pard\tx3100\tx3600\pardeftab720\li3600\fi-3600\partightenfactor0
+\ls1\ilvl4\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	} Listen - listen from Rabbit MQ before committing and \
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}Acknowledge - Send the acknowledgment of commit or rollback \
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+a. Controlling Node - House of most of the logic to finally commit or rollback transaction\
+\ls1\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+b. Participating Node - Node where actions are performed\
+\ls1\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+c. The 2 Phases are :\
+\ls1\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}(i) Preparer Phase (Phase 1)-\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Ask - Controlling node as participating node if all are ready to commit. And Participating nodes has to response Yes or No\expnd0\expndtw0\kerning0
+\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}(ii) Commit Phase (Phase 2)-\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880\partightenfactor0
+\ls1\ilvl3\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Commit - If all say Yes then commit else rollback\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}\expnd0\expndtw0\kerning0
+ Send Acknowledgment\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+   7. Short Coming \
+\pard\tx1660\tx2160\tx2267\tx2834\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}First - In the \'93Commit Phase\'94 , if one service goes down or unavailable , then others cannot be rollbacked or commit , based on the instruction from controlling node I.e Transaction co-ordinator.\
+\pard\tx1660\tx2160\tx2267\tx2834\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u8259 
+\f0 	}Second - Slow because overhead to co-ordinate with global transaction manager\
+{\listtext	
+\f1 \uc0\u8259 
+\f0 	}third -\expnd0\expndtw0\kerning0
+  	Since for final commit /rollback , acknowledgement from all microservices is needed therefore this is inevitable we have to wait for the slowest response . Which also cause slowness.\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+ \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+\cf2 	8. SAGA - \
+		a. SEC (Saga Execution Co-ordinator) : Core Component- What all it does:\
+			a. Maintain Saga Logs - E1\'97>E2\'97>E3 I.e maintain sequence of events which belongs to a particular flow\
+			b. In Case of Failure - SEC enquire logs Why? - \
+					b.1 to check which components are impacted\
+					b.2 Compensation Transactions - Sequence of compensation transactions to be called for rollback or cleanup.\
+			c. Important - If SEC fails , it can always go back to see logs I.e SEC Logs , to check :\
+						c.1 which all transactions have been rolled back \
+					c.2 Which are pending \
+					c.3 and start calling in reverse chronological order.\
+\
+	Kafka and SEC (Saga Execution Co-ordinator) - Both are log based, can once can always go back to see the logs and start all over again\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 	9. How to implement SAGA.       [Generic SAGA below]\
+\
+\cf3 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+\cf3 \
+			\cb4 SAGA Logs\cb1 					\cb5 Transaction Co-ordinator\cb1  						\cb6 Micro-Services\cb1  \
+\
+		Order-Transaction-1- start												\'97\'97\'97\'97\'97\'97-> Order\
+		Order-Transaction-1- end										\
+		\
+		Product -T2-start			\'97\'97\'97\'97\'97\'97\'97> SEC Saga Execution Co-ordinator 		\'97\'97\'97\'97\'97> Account\
+		Product -T2-end\
+\pard\pardeftab720\partightenfactor0
+\cf3 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\pardeftab720\partightenfactor0
+\cf3 		Payment-T3-start												 		\'97\'97\'97\'97\'97> Payment	\
+		Payment-T3-end\
+\cf2 \
+	\
+\
+				9.1  Choreography Pattern - [ It should be well planned ]\
+					Process is - 	Service 1 perform Local Transaction \'97> Publish done\
+									Service 2 Successive Service listen and perform Local Transaction \'97> Publish done\
+									\
+									Step 1 - \ul Register\ulnone  : 	Service comes up - Register with SEC Why ? So that the service becomes a part of a transaction and log will also be maintained.\
+									Step 2 - \ul SEC\ulnone  - Maintain log and make entry \
+									Step 3 - \
+										Success - \
+										Failure - SEC will see logs and in reverse order will start calling compensation methods\
+									Step 4 - If during rollback something fails then its a responsibility of SEC to check the logs and retry again, until the rollback is done.\
+\
+					SEC is either a part of a micro service or a stand alone unit\
+					\
+				10 - 2PC - 2 Phase commit is resolved by using Saga\
+						Problem - Once something goes wrong in commit and rollback i.e commit phase , then it cannot be handled . Rollbacks and Commit can be in an inconsistent stat 					state.\
+					
+\f2\i \ul Solution
+\f0\i0 \ulnone  - SAGA - 		Through \{ SEC \}\
+					1. because even if something is failed it can be resumed anytime as the SEC logs maintains the stack of sequence of events .\
+						https://developer.ibm.com/depmodels/microservices/articles/use-saga-to-solve-distributed-transaction-management-problems-in-a-microservices-architecture/\
+						2. SAGA Guarantees that compensation methods are executed and are retried unless executed successfully.\
+					3. Idempotent - Compensation methods are idempotent, as whatever be the input the output remains the same\
+\
+\
+				[Execution Process ] 		Start \'97 T1\'97 T2\'97 T3 \'97 END Success\
+				-	-	-	-	-	-	-	\'97	-	-	-	-	-	-	-	-	-	[SEC - Single Executor Coordinator]\
+				[Compensation Process]		Start \'97\'97 T3 \'97 T2 \'97T1   End Success 	\
+				
+\f2\i \cf2 \ul \ulc2 Compensation Start from here in reverse order
+\f0\i0 \cf2 \ulnone \
+\
+				Note - All DD - > Domain Driven Services are developed and deployed independently \
+							      - > Single Business Process brings multiple service together to get a common solution	  	\
+\
+			SAGA Pattarn is a ultimate solution:\
+			1. Maintain data consistency , no tight coupling. As it ensure , the commit or rollback will be done for sure and can be retried till its successful\
+			2. Performance is better\
+			3. Offer - no single point of failure , same as its in the 2PC scenario , anything fails or transaction co-ordinator fails the entire service goes down.\
+\
+\
+\
+		11. FRAMEWORKS - Frameworks available for implementation of SAGA chroreography :\
+					1. Eclipse MicroProfile LRA ( Long Running Action) - Based on REST principles \
+					2. Eventuate Tram Saga\
+					3. Axon Saga\
+					4. Seata \
+\
+\
+	12 . ORCHESTRATION \
+			SINGLE ORCHESTRATOR COMPONENT to manage all the transaction process \
+			Important Note - \
+			\
+			1. Single Orchestration Component means - every micro service is responsible for calling the compensation method , rather then tell to SEC in case of Choreograpy pattern\
+			\
+		*******************************************************\
+ 
+\f2\i 		(MS1)	MicroService1 -T1 \'97 > 	process()\
+									\{\
+										process ()	\
+										commitLocalTransaction()\
+										publishtoSuccesor()\'97\'97 > MS2\
+										\
+										finally()\{\
+													if(All ok) Good \
+													if(Not ok)\{\
+														callCompensationMethod();\
+													\}\
+										\}\
+									\}\
+\
+\
+		 	(MS2)	MicroService2 -T2 \'97 > 	process()\
+								\{\
+									process ()	\
+									commitLocalTransaction()										\
+									publishtoSuccesor()\'97\'97 > MS3\
+									\
+									finally()\{\
+												if(All ok) Good \
+												if(Not ok)\{\
+													callCompensationMethod();\
+												\}\
+									\}\
+								\}\
+\
+	\
+			 	(MS3)	MicroService3 -T3 \'97 > 	process()\
+								\{\
+									process ()	\
+									commitLocalTransaction()										\
+									\
+									finally()\{\
+												if(All ok) Good \
+												if(Not ok)\{\
+													callCompensationMethod();\
+												\}\
+									\}\
+								\}
+\f0\i0 \
+\
+		\
+		*******************************************************\
+	\
+\
+	13. When to use Choreography VS Orchestration \
+			Use Choreography pattern - When there is a \cf3 \cb8 start\cf2 \cb1  of the microprocessing building ie business process with a clear thought in mind , as the rollback/Commit  will be handled by 		SCE using the SEC Logs Single Executor Coordinator\
+			\
+			Use Orchestration pattern - when there is already an \cf3 \cb8 existing\cf2 \cb1   micro service present and you want to add on more components . As there is no SEC , every micro service is 		responsible to call its compensation method\
+	\
+\
+	14. Frameworks which implements Observation Pattern in micro services\
+		Camunda\
+		Apache Camel\
+		IBM AppConnect\
+\
+\
+\
+Note - Need to visit this site again to se how apache camel and other patters are implemented\
+\
+\
+\
+\
+\
+\
+\
+\
+}

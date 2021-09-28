@@ -1,0 +1,56 @@
+1. Containers and Network access , how containers interact with each other .
+
+Basically meaning [Container 2 - Main application] is communication to 4 api's
+	Another Container -DB
+	Direct interner www.website - third part API
+	Local machine
+
+Part 1 [Container 1 - SQL]  <----> [Container 2 - Main application] <--------> [Internet - www.interner]
+Part 2 Also [Container 2 - Main application] <------> [with application on local host]
+
+2. EITHER we provide the url , like we use rest template and url ,
+	OR we allow docker to to make container networks
+	
+3. 
+-----------------------------
+Creating Container Networks
+-----------------------------
+
+|-----------------Network--------------------|
+| [Container-1] [Container-2] [Container-3]	 |
+|------------------------------------------- |
+
+Point 1 - [Putting All containers in one network]
+a.  we can add all the containers in one network by adding "--network my_network" ... in docker run
+		> docker run --network my_network_name .... 
+b.  so now all containers can talk to each other under one network , and docker manages it all. All ip lookup and other stuff docker
+	does itself.No need to do manual ip lookup. I think more like Eureka Server which is handing it.
+
+Point 2 - Instead of a normal run command , make changes in the basic command and add --network parameter
+		> docker run --rm -d --name mongodb --network any_network_name_of_our_choice_its_just_an_identifier -p 3000:3000 image_name
+		
+		
+==============================
+	Important Concepts Starts
+==============================
+Point 3 - Very Very important : Unlike Volumes , docker will not create a network automatically for you
+			2 important steps :
+				a.) Create a network
+				b.) Now use the network
+	MOTA MOTA network banao and --netwok command docker run  mein de do
+
+Important Learning -How network communicate with each other ?
+	simply use the name of the container as a domain name in the url instead of localhost or ip address.
+E.g 
+	If not in same network :
+		http://10.0.1.2:8080/my_url			
+	If in same network :
+		http://name_of_container:8080/my_url	
+
+1. Docker communicate from container to local host by using special host.docker.internal address.		
+		
+		
+==============================
+	Important Concepts Ends
+==============================
+					

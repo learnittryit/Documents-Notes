@@ -1,0 +1,71 @@
+1. JS framework
+	create reactive SPA (Single Page Application)
+2. Reactive means real time experience - JS changes the DOM
+	Document Object Model(DOM) - we are only changing the currently loaded page
+3. Angular JS is outdated  --
+	Latest is = Angular .... just Angular
+	
+---------------
+1. Angular CLI
+
+
+========================
+	Basic Concepts
+========================
+1. Node JS is needed for Angular	[Angular CLI uses is behind the scene]	
+	npm = node package manager, to manage dependencies by angular
+	Node JS is a superset language
+
+2. Prerequisite is Node JS to install angular
+Install node JS - 
+
+•	Node.js v14.17.6 to /usr/local/bin/node
+•	npm v6.14.15 to /usr/local/bin/npm
+Make sure that /usr/local/bin is in your $PATH.	
+
+3. Now node JS is installed now go to CLI and install angular , all commands are on website
+https://angular.io/guide/setup-local
+npm install -g @angular/cli@latest
+-g = means globally
+Now Angular is installed from node package manager repository and install it in your machine
+
+4. Now Node JS and Angular both are installed.
+	Choose a folder where Angular is needed
+	
+	s1- cd /folder
+	s2- ng new my-first-app --no-strict
+		> set Angular routing N 
+		> CSS as default style sheets
+	s3 - ng serve , this brings up the server
+		By default it will run on the localhost:4200	
+
+4.1 - Add css + make angular aware using config "angular.json"
+	s4- Locally install bootstrap css , not globally as I amn not using -g
+		>npm install --save bootstrap@3 	
+		
+	
+Remember - we are using npm (Node Package Manager) for installations 
+	-g for global
+	without means project specific where the command is run and will store in nodes_modules folder. 
+	But we need to make angular aware of this , How? Answer :update one of the config file	
+	angular.json
+	s4.1 - go to angular.json file --> see the styles entry--> copy the path and paste 
+		"node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+	
+5. "ng serve" will start an app on a particular port, but if you write "ng serve" again then it will run same app on another port
+	E.g 
+		First  > On terminal on mac I did > ng serve					localhost:4200
+		Second > On terminal on Visual Studio Code I did > ng serve		localhost:4300
+		Change reflects changes on both
+		
+		
+		
+		
+		
+==============
+Type Script
+==============		
+		
+Type Script - 	Superset of JS e.g Type is a strong typing , writing time compiler checking
+				It does not	work in browser , and hence is converted to JS in the end	
+		

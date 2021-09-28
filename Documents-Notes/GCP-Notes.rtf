@@ -1,0 +1,518 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fmodern\fcharset0 CourierNewPS-BoldItalicMT;
+\f3\fmodern\fcharset0 CourierNewPS-ItalicMT;\f4\fmodern\fcharset0 CourierNewPS-BoldMT;}
+{\colortbl;\red255\green255\blue255;\red217\green234\blue202;\red0\green0\blue255;\red252\green39\blue18;
+\red255\green255\blue255;\red96\green140\blue196;\red251\green231\blue63;\red239\green247\blue169;\red194\green229\blue166;
+\red192\green237\blue254;\red254\green219\blue205;\red0\green0\blue0;\red207\green187\blue254;\red183\green202\blue20;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c87817\c93001\c83061;\cssrgb\c1680\c19835\c100000;\cssrgb\c100000\c25271\c7591;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c44706\c62353\c81176;\cssrgb\c98824\c91373\c30980;\cssrgb\c94902\c96766\c71899;\cssrgb\c80097\c91038\c70905;
+\cssrgb\c79369\c94291\c99728;\cssrgb\c100000\c88718\c84032;\csgray\c0\c0;\cssrgb\c84913\c79069\c99741;\cssrgb\c76538\c81772\c8867;
+\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15180\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs30 \cf0 1. gcloud group subgroup action 	[ 4 parts ]\
+\
+	gloud groups subgroups actions names options/filters/sort/source-instance-templates etc..\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \AppleTypeServices\AppleTypeServicesF65539 \cf0 \cb2 \expnd0\expndtw0\kerning0
+		
+\f2\i\b \AppleTypeServices Explanation\
+						\{\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0 \cf0 							gcloud compute instance-groups managed update-instances/rereate-instances/set-autoscaling/stop-									autoscaling	....any-action	--instances=inst1,inst2 --zone=zone-name\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf0 							\cf3 \
+							1. gcloud - cloud shell\
+							2. group - compute , basically its a service\
+							3. sub-group - instance-groups, instances ... or any\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0 \cf4 							\
+							If instance group, then question what type of instance Group?\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf0 							4. \cf3 managed / unmanaged\
+							5. action : 	set-autosclaing , stop-autoscaling/restart-instances/describe/delete/update-instances/												describe/resize, set-instance-template	\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0 \cf3 							\{ Only applicable to 
+\f2\b \ul update
+\f3\b0 \ulnone  not recreate\
+								--minimal-action=none,replace,referesh,restart,						[Atlease take this action]\
+								--most-disruptive-allowed-action = none, replace,referesh,start.   [Atmost take this exction, 																												nothing beyond this]\
+							\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf3 \
+\
+							6. name : of resource instance, instance groups etc\cf0 \
+							\
+							
+\f3\b0 \cf4 Which instances - which specific instances you want an action to be taken?\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf0 							\cf3 7. --instances = inst-1, inst-2 + --template=v2-template-name\
+							8. Other options --zone=zone-name, --size=10\
+									\
+\cf0 					\
+\
+						\}
+\f0\i0\b0\fs30 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	\
+COMMANDS - All command sub groups are plural please note\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97	\
+	a 	list = lists down all the information of group/subgroup etc\
+	b 	describe = pertains to specific group\
+	c. 	gcloud compute machine-types list 	reterives all machine types and its corresponding regions-zone\
+	d.   gcloud compute machine-types list (now I want to list based on specifc filter e.g only of specific zone) - - filter zone :specific zone\
+		\'97 \'97 filter is to apply filter on\
+		zone : - colon \'93:\'94 specify a specific zone on which filter is to be applied\
+		If we provide wrong zone name , then zero records listed but no error\
+	       \
+	e. gcloud compute machine-types \'97\'97filter \'93zones:(zone1,zone2)\'94\
+		\'93\'94 - its imp.\
+		() - its also imp.\
+		double quotes and brackets are important when the multile filter value is to be given\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+2. Basic hierarchy is \
+	init \'97>configuration\'97>account\'97>project \'97\'97> Now the entire work is done in a project \
+										: means crate instance or anything\
+\
+	\
+gcloud compute instances list\
+gcloud config lists	= no need of subgroup if only core properties are needed else all 4 parts are needed [ GLOUD GROUP SUBGROUP ACTION]\
+\
+3. Machine Types - can be default and can also be customeized\
+	machine types [vCPU and Memory]\
+\
+4. Command : \'97-filter and \'97-sort-by\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs32 \AppleTypeServices\AppleTypeServicesF65539 \cf0 \cb5 \expnd0\expndtw0\kerning0
+	1. 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \
+kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ 
+\f2\i\b \AppleTypeServices gcloud compute instances list --filter="zone:us-east1-d" --sort-by=region
+\f1\i0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cb1 \
+\cb5 NAME            ZONE        MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP  STATUS\cb1 \
+\cb5 kunal-instance  us-east1-d  e2-medium                  10.142.0.4                TERMINATED\
+
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 	2. - 
+\f3\i\b0 \AppleTypeServices Each resource is associated to one uri, hence uri is printed
+\f1\i0 \AppleTypeServices\AppleTypeServicesF65539 \
+		kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list --uri\cb1 \
+\cb5 		{\field{\*\fldinst{HYPERLINK "https://www.googleapis.com/compute/v1/projects/theta-moment-304101/zones/us-east1-d/instances/kunal-instance"}}{\fldrslt https://www.googleapis.com/compute/v1/projects/theta-moment-304101/zones/us-east1-d/instances/kunal-instance}}\
+	2.a - Zones / regions etc .. here the output will be many\
+		kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 zones/regions
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  list --uri\
+\
+\
+5. Describe Commands\
+	$ gcloud compute regions list --sort-by=region\
+	$ gcloud compute regions list \'97-sort-by=~region\
+	$ gcloud compute regions describe specific-region\
+	$ gcloud compute regions list --filer=\'93zone:(	spefifci-zone1,spefifci-zone2	)\'94 --sort-by=region  \
+	$ gcloud compute instances start/stop/create/delete/restart/describe/move instance-name\
+	$ gcloud compute instances list > it will list all the instances\
+
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 	$ gcloud compute instance delete instance name \'97delete-disks=VALUE [All or data or boot] - disk has to be deleted
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \
+	\
+6. Move command - to move an instance from one zone to another zone\
+	[move a VM from one zone to another]\
+\
+7. Commands of instance templates\
+	$ gcloud compute instance-templates create/delete/describe/list\
+	$ gcloud compute instance-templates describe template-name\
+	$ gcloud compute instance-templates delete instance-template-name\
+	$ gcloud compute instance-templates list\
+7.1 - We can create an instance template from a source instance , means I.e create an instance and then make template from it\
+		Important Point - when doing this , we have to specify the source instance zone\
+		--source-instance=SOURCE_INSTANCE --source-instance-zone (Which instance to create a template from)\
+\
+	$ gcloud compute instance-templated \
+	
+\f3\i \AppleTypeServices $ gcloud compute instances create my-instance 
+\f2\b --source-instance-template=
+\f3\b0 instance-template-2-with-startup-script-second
+\f1\i0 \AppleTypeServices\AppleTypeServicesF65539 \
+\
+\
+\
+======================================================================================================================\
+		CH -6 Instance Groups\
+======================================================================================================================\
+\
+1. MIG - Identical group of instances , created using a templates.\
+		Identical configuratins/machine-types/h/w etc\
+\
+2. MIG Managed Instance Groups\
+	Auto Scaling -Load Balancer/Balancing - instances are added / reduced based on load\
+	Auto Healing - Configure health check, if something fails immediately instance is replaced.\
+	Release Management - Deployment types rolling , canary, which version and multiple version release\
+\
+3. Un-managed Instance Groups - VM\'92s with completely different configurations\
+	No Auto Scaling or Auto Healing\
+\
+1. Rolling Deployment ( 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf3 Batches of Instances
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0  
+\f2\i\b \AppleTypeServices not batches of Users
+\f1\i0\b0 \AppleTypeServices\AppleTypeServicesF65539 )\
+						-> Same Server/Environment -> Multiple instances of same server \
+						-> Server1[ VM1,VM2\'85.VM-n]\
+						-> Release on VM1 and VM5 I.e to specific set of servers and if all ok , then on all VM\'92s\
+\
+2. Canary Deployment -> ( 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf3 Batches of Users
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0  on different servers/Environments  
+\f2\i\b \AppleTypeServices not batches of servers
+\f1\i0\b0 \AppleTypeServices\AppleTypeServicesF65539 )\
+						-> UAT Server / Users first , if all ok then only Production Users / Servers\
+\
+3. Blue Green -> Different Environments/Servers	\
+					-> Blue for testing  , Green is Production Environment\
+					-> Both remains and shift happens from Green to Blue and eventually Blue becomes Green\
+				\
+\
+4. Created a unmanaged instance groups\
+	No constraint - The instances can be of different configurations\
+	Constraints -:\
+				a. Instances should already be present as no template option is shown\
+				b. Instances must have same region+zones+network+sub-network\
+kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups list\cb1 \
+\cb5 NAME                  LOCATION           SCOPE  NETWORK  MANAGED  INSTANCES\cb1 \
+\cb5 instance-group-kunal  asia-southeast1-a  zone   default  No       2\
+\
+\
+\
+5 	gcloud project list\
+	gcloud config set project project_id\
+\
+\
+\
+6. \
+kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list\cb1 \
+\cb5 NAME                                         ZONE               MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS\cb1 \
+\cb5 kunal-instance-from-startup-script-template  asia-southeast1-a  e2-medium                  10.148.0.3   35.247.145.231  RUNNING\cb1 \
+\cb5 kunal-instance-from-template-1-dummy         asia-southeast1-a  e2-medium                  10.148.0.2   34.126.77.244   RUNNING\cb1 \
+\cb5 instance-group-kunal-mig-04jj                us-central1-c      e2-medium                  10.128.0.45  104.198.214.70  RUNNING\cb1 \
+\cb5 instance-group-kunal-mig-t3mk                us-central1-f      e2-medium                  10.128.0.44  35.238.44.123   RUNNING\
+	\
+\
+\
+7. On deleting instances and instance-groups , health check was not deleted . \
+	Make sure to delete it.I am not sure if billing of health check is also happening\
+\
+\
+\
+======================================================================================================================\
+		CH -6 Instance Groups\
+		Below are the back end activities happening during an update of the instance-groups\
+		1. Max surge - in green automatically to support an update 3 instances are added\
+		2. Max unavailable - not shown here , but is also taken care\
+		3. Max surge = max unavailable = both 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul can not
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  be equal or zero at the same time\
+		4. Max surge and max unavailable = both can either be 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul zero or \'93at least\'94
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  be equal to the number of 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul zones
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone \
+		5. Wait time - 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul After
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  VM1 is healthy and is up now \'97 now there will be wait time of some seconds e.g 3 seconds \
+						
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul before 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone VM2 actually starts getting updated\
+		6. Max surge = 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul temporary
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  addition of instances to support update (below green)\
+	Get zone information using > gcloud compute instances list\
+\
+		7 Very Important : We can delete / remove a particular instance from a MIG or un-MIG :\
+			Steps : 1. Check the checkbox of particular instance\
+					2. Go on top right next to delete-group , see 2 dots vertically \'85 , click and choose to delete or remove.\
+					\
+		\
+======================================================================================================================\
+kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list\cb1 \
+\cb5 NAME                         ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP      STATUS\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb8 instance-group-1-kunal-698x  us-central1-b  e2-medium                  10.128.0.52  34.71.92.83      RUNNING\
+instance-group-1-kunal-7q3t  us-central1-b  e2-medium                  10.128.0.53  104.154.130.107  RUNNING\
+instance-group-1-kunal-849m  us-central1-c  e2-medium                  10.128.0.51  35.222.150.133   RUNNING\
+instance-group-1-kunal-9ztd  us-central1-f  e2-medium                  10.128.0.50  34.71.214.216    RUNNING\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list\cb1 \
+\cb5 NAME                         ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP      STATUS\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb9 instance-group-1-kunal-698x  us-central1-b  e2-medium                  10.128.0.52  34.71.92.83      RUNNING\
+instance-group-1-kunal-7q3t  us-central1-b  e2-medium                  10.128.0.53  104.154.130.107  RUNNING\
+instance-group-1-kunal-wn5n  us-central1-b  e2-medium                                                PROVISIONING\
+instance-group-1-kunal-5500  us-central1-c  e2-medium                  10.128.0.55  104.198.214.70   STAGING\
+instance-group-1-kunal-849m  us-central1-c  e2-medium                  10.128.0.51  35.222.150.133   RUNNING\
+instance-group-1-kunal-9ztd  us-central1-f  e2-medium                  10.128.0.50  34.71.214.216    RUNNING\
+instance-group-1-kunal-pjxm  us-central1-f  e2-medium                  10.128.0.54  34.71.24.8       STAGING\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list\cb1 \
+\cb5 NAME                         ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP      STATUS\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb10 instance-group-1-kunal-698x  us-central1-b  e2-medium                  10.128.0.52  34.71.92.83      RUNNING\
+instance-group-1-kunal-7q3t  us-central1-b  e2-medium                  10.128.0.53  104.154.130.107  RUNNING\
+instance-group-1-kunal-wn5n  us-central1-b  e2-medium                  10.128.0.56  35.238.44.123    RUNNING\
+instance-group-1-kunal-5500  us-central1-c  e2-medium                  10.128.0.55  104.198.214.70   RUNNING\
+instance-group-1-kunal-849m  us-central1-c  e2-medium                  10.128.0.51  35.222.150.133   RUNNING\
+instance-group-1-kunal-9ztd  us-central1-f  e2-medium                  10.128.0.50  34.71.214.216    RUNNING\
+instance-group-1-kunal-pjxm  us-central1-f  e2-medium                  10.128.0.54  34.71.24.8       RUNNING\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instances list\cb1 \
+\cb5 NAME                         ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP      STATUS\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb11 instance-group-1-kunal-7q3t  us-central1-b  e2-medium                  10.128.0.53  104.154.130.107  RUNNING\
+instance-group-1-kunal-cz2q  us-central1-b  e2-medium                                                PROVISIONING\
+instance-group-1-kunal-wn5n  us-central1-b  e2-medium                  10.128.0.56  35.238.44.123    RUNNING\
+instance-group-1-kunal-5500  us-central1-c  e2-medium                  10.128.0.55  104.198.214.70   RUNNING\
+instance-group-1-kunal-849m  us-central1-c  e2-medium                  10.128.0.51  35.222.150.133   RUNNING\
+instance-group-1-kunal-9ztd  us-central1-f  e2-medium                  10.128.0.50  34.71.214.216    RUNNING\
+instance-group-1-kunal-pjxm  us-central1-f  e2-medium                  10.128.0.54  34.71.24.8       RUNNING\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 ======================================================================================================================\cb12 \
+\
+\
+\cb5 ======================================================================================================================\cb12 \
+8. Difference in command for managed and all instance groups \
+	If we use managed keyword then only MIG\'92s are shown , else all instance groups are shown\
+		>gcloud compute instance-groups list\
+		>gcloud compute instance-groups 
+\f2\i\b \AppleTypeServices \ul managed
+\f1\i0\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  list.  [ Here more information is shown as shown below \
+\cb5 ======================================================================================================================\cb12 \
+\cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups list\cb1 \
+\cb5 NAME                        LOCATION       SCOPE   NETWORK  MANAGED  INSTANCES\cb1 \
+\cb5 instance-group-1-kunal      us-central1    region  default  Yes      4\cb1 \
+\cb5 instance-group-1-unmanaged  us-central1-f  zone    default  No       1\cb1 \
+\cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 managed
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  list\cb1 \
+\cb5 NAME                    LOCATION     SCOPE   BASE_INSTANCE_NAME      SIZE  TARGET_SIZE  INSTANCE_TEMPLATE  AUTOSCALED\cb1 \
+\cb5 instance-group-1-kunal  us-central1  region  instance-group-1-kunal  4     4  \cb12 \
+\cb5 ======== ======== ======== ======== ======== ======== ======== ======== \cb12 \
+\cb5 ======== 
+\f2\i\b \AppleTypeServices Creating a Managed Instance group through CLI\
+	Note : this instance group is zonal specific and not region\
+	
+\f3\b0 but for high availablity we must make it a regional specific
+\f2\b \
+
+\f1\i0\b0 \AppleTypeServices\AppleTypeServicesF65539 ======== ======== ======== ======== ======== ======== ======== ======== \
+kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups managed create mig-kunal-from-cli --zone=us-central1\cb1 \
+\cb5 -a --template=instance-template-2-with-image-second-1 --size=3\cb1 \
+\cb5 Created [https://www.googleapis.com/compute/v1/projects/theta-moment-304101/zones/us-central1-a/instanceGroupManagers/mig-kunal-fro\cb1 \
+\cb5 m-cli].\cb1 \
+\cb5 NAME                LOCATION       SCOPE  BASE_INSTANCE_NAME  SIZE  TARGET_SIZE  INSTANCE_TEMPLATE                        AUTOSCALE\cb1 \
+\cb5 D\cb1 \
+\cb5 mig-kunal-from-cli  us-central1-a  zone   mig-kunal-from-cli  0     3            instance-template-2-with-image-second-1  no\cb1 \
+\cb5 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups managed list\cb1 \
+\cb5 NAME                    LOCATION       
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 SCOPE
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539    BASE_INSTANCE_NAME      SIZE  TARGET_SIZE  INSTANCE_TEMPLATE                        \cb1 \
+\cb5 AUTOSCALED\cb1 \
+\cb5 instance-group-1-kunal  us-central1    
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 region
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539   instance-group-1-kunal  4     4                                                     \cb1 \
+\cb5 yes\cb1 \
+\cb5 mig-kunal-from-cli      us-central1-a  
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 zone
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539     mig-kunal-from-cli      3     3            instance-template-2-with-image-second-1  \cb1 \
+\cb5 no\cb1 \
+\cb5 ======== ======== ======== ======== ======== ======== ======== ======== ======== \
+\
+======================================================================================================================\cb12 \
+					Commands \
+\cb5 ======================================================================================================================\cb12 \
+\cb5 ======== ======== ======== ======== ======== ======== ======== ======== ======== \cb12 \
+\cb5 \
+9. 	\cb13 gcloud compute instance-groups list\
+	gcloud compute instance-groups managed list\
+	gcloud compute instance-groups unmanaged list\cb5 \
+	Note - insance group name is appearing after action\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb2 	gcloud compute instance-groups delete instance-group-name \'97\'97\'97\'97> ERROR invalid choices Managed / Unmanaged is must\
+	gcloud compute instance-groups managed delete name \'97zone=\'93zone-name\'94  \'97\'97\'97> Zone name giving is a good option\
+																						\'97\'97> Size means the number of VM\'92s\
+	gcloud compute instance-groups unmanaged delete name 	\'97> default configuration-centralized zone is picked , then we have to 																	explicitly provide the name\
+	gcloud compute instance-groups managed create/delete/list/describe instance-group-name \'97zone=\'93name\'94 --size=3 \'97-template =template name\
+		\'97\'97>Note = or space both works\
+			a. --size = means number of VM\'92s\
+			b. --templates = for managed instance group(MIG) , template name is mandatory\
+			c. --zone = zone is also important , it\'92s a cli zone which is different than centralized or local from ui\
+			d. Instances manage by MIG cannot be edited using the edit option on the UI in \'93VN Instance\'94\
+			e. [Auto-healing-policies : combination of health-check and inital-delay]\
+				--health-check and --initial-delat and --cool-down-period 60 (auto scalar action initialisation lag)\
+				
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 command is : update name-of-mig
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \
+			f. During describe \'93 zone=zone-name\'94 should be given else it will ask you which zone instance-group you want to see\
+			g. By default stateless is created\
+			h. (no dashed --) set-autoscaling =name --max-num-replicas=3 , for auto-scaling max replicas is mandatory\
+				
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 command is : set-autoscaling/stop-autoscaling name-of-mig
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \
+			<!--gcloud group sub-group action followd-by-name-->\
+			// set-autoscaling name-of-instance-group	\
+				> gcloud compute instance-groups managed set-autoscaling instance-group-name-mig --max-num-replicas=2\
+			// stop-autoscaling followed by name , 
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 imp: 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 zone is important\
+				> gcloud compute instance-groups managed stop-autoscaling instance-group-name-mig zone=zone:name-of-zone\
+				\
+\
+\
+				--scale-based-on-cpu \'97-target-cpu-utilization\
+				--scaled-based-on-load-balancing --target-load-balancing-utilization\
+				\{\
+					common lines : --scale-based-on-[cpu,load-balancing] \
+					or --target\'97[anything]-utilization \
+							I.e \'97target-[cpu/load-balancing]-utilization]\
+				\}\
+		 i. \'97min-num--replicas and --mode(on/off/only-scale-out) \
+		 j. rezise the size\
+				> gcloud compute intance-groups managed resize instance-group-name --size=3	\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf0 			command is : resize name-of-mig
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \
+\
+		k. Delete - and - Recreate the instances\
+		
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 command is : recreate-instances name-of-mig and --instances= specific instance names to be recreated\
+			
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 > gcloud compute instance-groups managed recreate-instances instance-group-name --instances=instance-1,instance-5\
+			meaning : delete old instances and again create them , --instance=specify-the-name-of-instanced-to-be-recreated 	\
+			\cb5 remember : this reacreate has nothing to do with rolling \'93rolling update\'94 recreate/substritute\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb2 		\
+		l. restart instance , as we don\'92t want to delete-recreate it \
+			
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 command is : update- instances. 
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 --> reset is same as recreate \'93update-instances=restart-instances\'94\
+ 			> gcloud compute instance-groups managed update-instances instance-group-mig --instances=in1,in2\
+\
+			
+\f2\i\b \AppleTypeServices Explanation\
+						\{\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0 \cf0 							gcloud compute instance-groups managed update-instances/rereate-instances/set-autoscaling/stop-									autoscaling	....any-action	--instances=inst1,inst2 --zone=zone-name\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf0 							\cf3 \
+							1. gcloud - cloud shell\
+							2. group - compute , basically its a service\
+							3. sub-group - instance-groups, instances ... or any\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0 \cf4 							\
+							If instance group, then question what type of instance Group?\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf0 							4. \cf3 managed / unmanaged\
+							5. action : 	set-autosclaing , stop-autoscaling/restart-instances/describe/delete/update-instances/												describe/resize	\
+							6. name : of resource instance, instance groups etc\cf0 \
+							\
+							
+\f3\b0 \cf4 Which instances - which specific instances you want an action to be taken?\
+
+\f2\b \cf0 							\cf3 7. --instances = inst-1, inst-2\
+							8. Other options --zone=zone-name, --size=10\
+\cf0 					\
+\
+						\}\
+\
+		
+\f1\i0\b0 m. Update Template for instance group I.e MIG\
+			
+\f4\b command is : set-instance-template big-name --template=new-template-name-to-be-updated
+\f1\b0 \
+			> gcloud compute instance-groups managed set-instance-templates mag-name-instance-group-name --template=v2-new-						template-name\
+\
+		n. > gcloud compute instance-groups managed \AppleTypeServices\AppleTypeServicesF65539 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 			\
+
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 Note :
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  a. assignments are always singulars , but endpoint access or resource access is always plurals \
+			e.g --health-check=somthing\
+				gcloud compute health-check
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \ul s
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \ulnone  list\
+		b. action is followed by name\
+			>gcloud 	group 		sub-group 			action 													name-of-resource\
+			>gcloud 	compute 	instance-groups 	describe/delete/set-autoscaling/stop-autoscaling 	instance-group-name\
+\
+	\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb14 	gcloud compute health-checks list\
+	gcloud compute health-checks delete name-of-health-check\cb5 \
+\
+\
+======== ======== ======== ======== ======== ======== ======== ======== ======== \
+======== ======== ======== ======== ======== ======== ======== ======== ======== \
+\
+10. Machine Type = combination of ( Machine Family + Series )\
+\
+11. Important Learning : When we have done rolling action canary, I.e when we have configured multiple templates then we cannot see the template name on CLI\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 kunalraigcp@cloudshell:
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf6 ~ \cf7 (theta-moment-304101)
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf0 $ gcloud compute instance-groups managed list\cb1 \
+\cb5 NAME        LOCATION           SCOPE  BASE_INSTANCE_NAME  SIZE  TARGET_SIZE  
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 INSTANCE_TEMPLATE
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539   AUTOSCALED\cb1 \
+\cb5 kunals-mig  asia-southeast1-b  zone   kunals-mig          2     2                               yes\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b \AppleTypeServices\AppleTypeServicesF65539 \cf0 Command is :
+\f1\b0 \AppleTypeServices\AppleTypeServicesF65539  gcloud compute instance-groups managed rolling-action start-update kunals-mig --ver\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 sion=template=instance-template-2-with-image-second-1 --canary-version=template=instance-template-1-with-startup-script,target-size=50% --max-surge=1 --max-unavailable=0\
+}
