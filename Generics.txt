@@ -1,0 +1,17 @@
+Unbound Wildcard					List<?> = unknown types
+
+Upperbound Wildcard =extends		List<? extends Number>  - list of numbers or its sub-types , like double,Integer,Long  etc
+	[Upper Bound - means it will stay on top , so all sub types]
+
+Lowerbound Wildcard =super			List<? super Integer>	- list of numbers or its super-types , Object and Number
+	[Lowe Bound - means this will remain low , sp all super types]
+	
+Bounded means restricted
+Bounded wild cards. E.g
+List<Buildings> - it will only accept buildings
+List<? extends Building - it will accept Buildings and its sub types	, this is a bounded wild card
+Actual Bounded means restricted and real example is 
+	public <T> void test(List<T> t); - I have restricted that it can accept T only
+	public <T extends Building> void test(T t) : Mein sirf T hi accept keronga
+	
+	
